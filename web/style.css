@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 14/04/2022, 03:45:24 PM
+    Author     : Luu
+*/
+:root{
+    --header-height: 4rem;
+
+    --hue: 207;
+    --sat: 89%;
+
+    --first-color: hsl(var(--hue), var(--sat), 68%);
+    --first-color-alt: hsl(var(--hue), var(--sat), 56%);
+    --title-color: hsl(var(--hue), 12%, 15%);
+    --text-color: hsl(var(--hue), 8%, 35%);
+    --body-color: hsl(var(--hue), 100%, 99%);
+    --container-color: #FFF;
+
+    --body-font: 'Poppins', sans-serif;
+
+    --h1-font-size: 1.5rem;
+    --normal-font-size: .94rem;
+    --tiny-font-size: .625rem;
+
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+span{
+    color: var(--first-color);
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--container-color);
+    z-index: var(--z-fixed);
+    transition: .4s;
+    font-size: 20px;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+}
+/* Estilo de la barra de navegacion */
+.nav{
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav_logo{
+    margin-left: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    align-items: center;
+    margin: var(--header-height) 0 0 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+    justify-content: center;
+    flex-direction: column;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    height: 75%;
+    margin-top: 0rem;
+    padding: 2rem;
+    background: var(--container-color);
+    border-radius: 10px;
+   box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+}
+.text{
+    display: block;
+    color: var(--first-color);
+    margin: 1rem 0 1rem 0;
+}
+.titulo{
+    width: 50%;
+    text-align: left;
+    margin-top: 2rem;
+
+}
+.fill{
+    width: 100%;
+    height: 2rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 5px;
+    outline-color: var(--first-color);
+}
+a{
+    text-decoration: none;
+    
+}
+a:visited{
+    color:var(--first-color);
+}
+.button{
+    background: var(--first-color);
+    color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    margin: 1rem 0 1rem 0;
+    width: 25%;
+    font-size: 0.95rem;
+}
+form{
+    width: 75%
+}
+  /* ESTILO DE ADVERTENCIAS */
+  .warning {
+    display: none;
+  }
+
+  .warning.active,
+  .warning.active p {
+    display: block;
+    color: crimson;
+  }
+@media screen and (min-width: 320px){
+   .button{
+   width: 100%;
+   }
+} 
+@media screen and (min-width: 750px){
+   .button{
+   width: 40%;
+   }
+} 
+@media screen and (min-width: 1200px){
+   .button{
+   width: 25%;
+} 
+}
