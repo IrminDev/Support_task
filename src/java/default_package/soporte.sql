@@ -63,6 +63,13 @@ foreign key (id_reporte) references reporte(id_reporte),
 foreign key (id_estatus) references estatus(id_estatus)
 );
 
+CREATE TABLE relacion_reporte_mantenimiento(
+id_reporte_soporte int,
+id_reporte_mantenimiento int,
+foreign key (id_reporte_soporte) references reporte(id_reporte),
+foreign key (id_reporte_mantenimiento) references reporte(id_reporte)
+);
+
 -- DATOS NECESARIOS
 INSERT INTO estatus VALUES
 (default,  "Abierto"),
@@ -115,8 +122,7 @@ DROP PROCEDURE IF EXISTS altaReporte;
 delimiter &&
 CREATE PROCEDURE altaReporte(
 descripcionN nvarchar(1000),
-encargadoN int,
-tipoN int
+encargadoN int
 )
 BEGIN
 
@@ -128,7 +134,7 @@ INSERT INTO relacion_reporte_encargado VALUES
 (encargadoN, @id_reporte);
 
 INSERT INTO relacion_reporte_tipo VALUES
-(@id_reporte, tipoN);
+(@id_reporte, 1);
 
 INSERT INTO relacion_reporte_estatus VALUES
 (@id_reporte, 1);
@@ -137,6 +143,36 @@ END &&
 delimiter ;
 
 
+
+
+
+DROP PROCEDURE IF EXISTS altaReporteMantenimiento;
+delimiter &&
+CREATE PROCEDURE altaReporteMantenimiento(
+id_reporteSop int,
+descripcionN nvarchar(1000),
+encargado int
+)
+BEGIN
+
+INSERT INTO reporte VALUES
+(default, descripcionN, CURDATE(), null);
+SET @id_reporte = last_insert_id();
+
+INSERT INTO relacion_reporte_encargado VALUES
+(encargadoN, @id_reporte);
+
+INSERT INTO relacion_reporte_tipo VALUES
+(@id_reporte, 2);
+
+INSERT INTO relacion_reporte_estatus VALUES
+(@id_reporte, 1);
+
+INSERT INTO relacion_reporte_mantenimiento VALUES
+(id_reporteSop, id_reporte);
+
+END &&
+delimiter ;
 
 
 
