@@ -22,7 +22,7 @@
     <body>
         <h3 class="titulo">Registrate</h3>
         <div class="container">
-            <form class="registroForm" action="../ControlUsuarios" method="POST">
+            <form class="registroForm" action="../ControlUsuarios" method="POST" autocomplete="off">
                 <div class="error-text"></div>
                 <div class="input-field" id="cnombre">
                     <h3 class="Text">Nombre</h3>
