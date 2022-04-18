@@ -10,7 +10,7 @@
 <html>
     <head>
         <title>Inicio</title>
-        <link rel="stylesheet" href='Reportes/style.css'>
+        <link rel="stylesheet" href='IS/Reportes/style.css'>
         <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,6 +27,7 @@
         </nav>
     </header>
     <body>
+        <h3 class="titulo">Reportes pendientes</h3>
         <h3 class="titulo">Reportes pendientes</h3>
         <-<!-- AQUI TRAEMOS LOS DATOS ALMACENADOS  -->
         <c:forEach  var="reporte" items="${lista}">
@@ -52,7 +53,6 @@
             
     </div>   
         </c:forEach>
-
         <script src="script.js"></script>
            <script>
 $(function(){

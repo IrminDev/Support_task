@@ -15,15 +15,26 @@ public class Reporte {
     private Date fin;
     private int idEncargado;
     private String nombreEncargado;
+    private String apellidoEncargado;
     private int idEstatus;
     private String estatus;
 
-    Reporte(String idReporte) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Reporte(int id, String descripcion, Date inicio, Date fin, String nombreEncargado, String apellidoEncargado, String estatus) {
+       this.idReporte = id;
+       this.descripcion = descripcion;
+       this.inicio = inicio;
+       this.fin = fin;
+       this.nombreEncargado = nombreEncargado;
+       this.apellidoEncargado = apellidoEncargado;
+       this.estatus = estatus;
+    }
+   
+public String getApellidoEncargado() {
+        return apellidoEncargado;
     }
 
-    Reporte() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setApellidoEncargado(String apellidoEncargado) {
+        this.apellidoEncargado = apellidoEncargado;
     }
 
     public int getIdReporte() {
@@ -119,6 +130,9 @@ public class Reporte {
     public String getEstatus() {
         return estatus;
     }
-
     
+    
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }    
 }
