@@ -214,6 +214,8 @@ WHERE id_reporte = idReporte;
 END &&
 delimiter ; 
 
+/*Consulta general*/
+
 DROP PROCEDURE IF EXISTS listarReportes;
 delimiter &&
 CREATE PROCEDURE listarReportes(    
