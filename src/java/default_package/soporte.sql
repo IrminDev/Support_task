@@ -137,13 +137,13 @@ INSERT INTO relacion_reporte_tipo VALUES
 (@id_reporte, 1);
 
 INSERT INTO relacion_reporte_estatus VALUES
-(@id_reporte, 1);
+(@id_reporte, 2);
 
 END &&
 delimiter ;
 
-
-
+call altaReporte("holamaidnd",3);
+call altaReporte("pruebadequesisirve",4);
 
 
 DROP PROCEDURE IF EXISTS altaReporteMantenimiento;
@@ -151,7 +151,7 @@ delimiter &&
 CREATE PROCEDURE altaReporteMantenimiento(
 id_reporteSop int,
 descripcionN nvarchar(1000),
-encargado int
+encargadoN int
 )
 BEGIN
 
@@ -166,7 +166,7 @@ INSERT INTO relacion_reporte_tipo VALUES
 (@id_reporte, 2);
 
 INSERT INTO relacion_reporte_estatus VALUES
-(@id_reporte, 1);
+(@id_reporte, 3);
 
 INSERT INTO relacion_reporte_mantenimiento VALUES
 (id_reporteSop, id_reporte);
@@ -174,7 +174,7 @@ INSERT INTO relacion_reporte_mantenimiento VALUES
 END &&
 delimiter ;
 
-
+CALL altaReporteMantenimiento(1, "olaamigos",4);
 
 
 DROP PROCEDURE IF EXISTS cerrarReporte;
@@ -213,3 +213,31 @@ WHERE id_reporte = idReporte;
 
 END &&
 delimiter ; 
+
+DROP PROCEDURE IF EXISTS listarReportes;
+delimiter &&
+CREATE PROCEDURE listarReportes(    
+idUsuario int
+)
+
+BEGIN
+
+SELECT 
+reporte.id_reporte,
+reporte.fecha_inicio,
+reporte.fecha_fin,
+reporte.descripcion,
+usuario.nombre,
+usuario.apellido,
+estatus.estatus
+FROM reporte
+INNER JOIN relacion_reporte_encargado ON relacion_reporte_encargado.id_reporte = reporte.id_reporte
+INNER JOIN usuario ON usuario.id_usuario = relacion_reporte_encargado.id_usuario
+INNER JOIN relacion_reporte_estatus ON relacion_reporte_estatus.id_reporte = reporte.id_reporte
+INNER JOIN estatus ON estatus.id_estatus = relacion_reporte_estatus.id_estatus
+WHERE usuario.id_usuario = idUsuario;
+
+END
+&& delimiter ;
+
+CALL listarReportes(4);
