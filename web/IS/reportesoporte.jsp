@@ -22,7 +22,7 @@
                 <span>S</span>upport<span>W</span>ide
             </div>
             <div class="links">
-                <a href="">Ver Reportes </a>
+                <a href="#">Ver reportes </a>
             </div>
         </nav>
     </header>

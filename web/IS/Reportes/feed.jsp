@@ -22,22 +22,21 @@
                 <span>S</span>upport<span>W</span>ide
             </div>
             <div class="links">
-                <a href="">Ver Reportes </a>
+                <a href="#">Ver reportes </a>
             </div>
         </nav>
     </header>
     <body>
         <h3 class="titulo">Reportes pendientes</h3>
-        <h3 class="titulo">Reportes pendientes</h3>
-        <-<!-- AQUI TRAEMOS LOS DATOS ALMACENADOS  -->
+        <!-- AQUI TRAEMOS LOS DATOS ALMACENADOS  -->
         <c:forEach  var="reporte" items="${lista}">
         <div class="container">
             <div class="unidad" >
                 <div class="division uno">
-                    <-<!-- EMPEZAMOS A DESPLEGAR LOS DATOS REQUERIDOS -->
+                    <!-- EMPEZAMOS A DESPLEGAR LOS DATOS REQUERIDOS -->
                 <div>
                     <h2>Estatus</h2>
-                    <h3><c:out value="${reporte.estatus}" /></h3>
+                    <h5><c:out value="${reporte.estatus}" /></h5>
                 </div>
             </div>
             <div class="division dos">
@@ -45,8 +44,8 @@
                 <h3 class="Text"><c:out value="${reporte.nombreEncargado}" /> <c:out value="${reporte.apellidoEncargado}" /></h3>
                 <h3 class="Text">Fecha de inicio: <c:out value="${reporte.inicio}" /></h3>
                 <h3 class="Text">Fecha de fin: </h3>
-                 <h3 class="Text">Descripción</h3>
-                 <textarea  rows="20" id="content" class="fillarea" readonly> <c:out value="${reporte.descripcion}" /></textarea>
+                <h3 class="Text">Descripción</h3>
+                <textarea  rows="20" id="content" class="fillarea" readonly> <c:out value="${reporte.descripcion}" /></textarea>
             </div>
             </div>
         </div>

@@ -41,6 +41,7 @@ id_reporte int,
 foreign key (id_usuario) references usuario(id_usuario),
 foreign key (id_reporte) references reporte(id_reporte)
 );
+select*from relacion_reporte_encargado;
 
 CREAtE TABLE relacion_usuario_tipo(
 id_usuario int,
@@ -141,9 +142,9 @@ INSERT INTO relacion_reporte_estatus VALUES
 
 END &&
 delimiter ;
-
 call altaReporte("holamaidnd",3);
-call altaReporte("pruebadequesisirve",4);
+
+select*from reporte;
 
 
 DROP PROCEDURE IF EXISTS altaReporteMantenimiento;
@@ -151,7 +152,7 @@ delimiter &&
 CREATE PROCEDURE altaReporteMantenimiento(
 id_reporteSop int,
 descripcionN nvarchar(1000),
-encargadoN int
+encargado int
 )
 BEGIN
 
@@ -166,7 +167,7 @@ INSERT INTO relacion_reporte_tipo VALUES
 (@id_reporte, 2);
 
 INSERT INTO relacion_reporte_estatus VALUES
-(@id_reporte, 3);
+(@id_reporte, 1);
 
 INSERT INTO relacion_reporte_mantenimiento VALUES
 (id_reporteSop, id_reporte);
@@ -174,7 +175,7 @@ INSERT INTO relacion_reporte_mantenimiento VALUES
 END &&
 delimiter ;
 
-CALL altaReporteMantenimiento(1, "olaamigos",4);
+
 
 
 DROP PROCEDURE IF EXISTS cerrarReporte;
@@ -214,8 +215,6 @@ WHERE id_reporte = idReporte;
 END &&
 delimiter ; 
 
-/*Consulta general*/
-
 DROP PROCEDURE IF EXISTS listarReportes;
 delimiter &&
 CREATE PROCEDURE listarReportes(    
@@ -237,9 +236,51 @@ INNER JOIN relacion_reporte_encargado ON relacion_reporte_encargado.id_reporte =
 INNER JOIN usuario ON usuario.id_usuario = relacion_reporte_encargado.id_usuario
 INNER JOIN relacion_reporte_estatus ON relacion_reporte_estatus.id_reporte = reporte.id_reporte
 INNER JOIN estatus ON estatus.id_estatus = relacion_reporte_estatus.id_estatus
-WHERE usuario.id_usuario = idUsuario;
+WHERE usuario.id_usuario = 3;
 
 END
 && delimiter ;
 
-CALL listarReportes(4);
+CALL listarReportes(3);
+
+DROP PROCEDURE IF EXISTS comprobarRegistro;
+delimiter $$
+CREATE PROCEDURE comprobarRegistro(
+correo nvarchar(40),
+contrasena nvarchar(200)
+)
+begin
+SELECT
+usuario.id_usuario,
+relacion_usuario_tipo.id_tipo
+FROM usuario
+INNER JOIN relacion_usuario_tipo on usuario.id_usuario = relacion_usuario_tipo.id_usuario
+WHERE usuario.correo = correo
+AND contrasena= contrasena;
+end $$
+delimiter ;
+
+call comprobarRegistro ("irminhdz@workwide.com", "IRHERWW-013");
+
+DROP PROCEDURE IF EXISTS iniciarUsuario;
+delimiter $$
+CREATE PROCEDURE iniciarUsuario(
+id int
+)
+begin
+SELECT
+usuario.nombre,
+usuario.apellido,
+usuario.correo,
+tipo_usuario.tipo
+FROM usuario
+INNER JOIN relacion_usuario_tipo ON relacion_usuario_tipo.id_usuario = usuario.id_usuario
+INNER JOIN tipo_usuario ON tipo_usuario.id_tipo = relacion_usuario_tipo.id_tipo
+WHERE usuario.id_usuario = id;
+end $$
+delimiter ;
+call iniciarUsuario(1);
+select*from reporte;
+
+-- Cambiamos la base datos porque la otra marcaba errores
+-- Funciona de manera correcta

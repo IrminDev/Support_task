@@ -1,10 +1,10 @@
 /*
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : 15/04/2022, 10:01:39 PM
-    Author     : Luu
+    Created on : 18/04/2022, 05:46:46 PM
+    Author     : Moni
 */
 :root{
     --header-height: 4rem;
@@ -32,7 +32,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    transition:1s;
+}
+ul {
+  padding: 0;
+  list-style: none;
+}
+ul {
+  margin: 0;
+}
+a {
+  text-decoration: none;
 }
 span{
     color: var(--first-color);
@@ -60,7 +69,8 @@ header{
     font-family: 'Poppins', sans-serif;
     color: var(--first-color-lighter);
 }
-.links{
+
+.link{
     margin: 0 1rem 0 0;
 }
 body{
@@ -83,10 +93,7 @@ body{
     padding: 2rem;
     background: var(--container-color);
     border-radius: 10px;
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
-}
-.fillarea{
-    margin-top: 1rem;
+   box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
 }
 .text{
     display: block;
@@ -109,7 +116,7 @@ body{
 }
 a{
     text-decoration: none;
-
+    
 }
 a:visited{
     color:var(--first-color);
@@ -127,112 +134,32 @@ a:visited{
 form{
     width: 75%
 }
-textarea{
-    resize: none;
-    width: 100%;
-    height: 8rem;
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 10px;
-    padding: 5px;
-    outline-color: var(--first-color);
-
-}
-
-/* ESTILO DE ADVERTENCIAS */
-.warning {
+  /* ESTILO DE ADVERTENCIAS */
+  .warning {
     display: none;
-}
-/* Estilo de text area redimensionable*/
-.noscroll{
-  overflow: hidden;
-  resize: none;
-}
-.hiddendiv{
-  display: none;
-  white-space: pre-wrap;
-  width: 500px;
-  min-height: 50px;
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-  padding: 5px;
-  word-wrap: break-word;
-  margin-top: 1rem;
-}
-.lbr {
-  line-height: 3px;
-}
-.warning.active,
-.warning.active p {
+  }
+
+  .warning.active,
+  .warning.active p {
     display: block;
     color: crimson;
-}
-.unidad{
-    display: flex;
-    justify-content: center;
-    width: 60%;
-    height: 75%;
-    flex-direction: row;
-    margin-top: 0rem;
-    background: var(--container-color);
-    border-radius: 10px;
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
-}
-.division{
-    padding: 1rem;
-    
-}
-.uno{
-    width: 25%;
-    color: #fff;
-    background-color: var(--first-color);
-    border-radius: 10px 0 0 10px;
-}
-.dos{
-    width: 75%;
+  }
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 @media screen and (min-width: 320px){
-    .button{
-        width: 100%;
-    }
-      .unidad{
-        width: 100%;
-        flex-direction: column;
-    } 
-}
+   .button{
+   width: 100%;
+   }
+} 
 @media screen and (min-width: 750px){
-    .button{
-        width: 40%;
-      
-    }
-         .unidad{
-        width: 70%;
-        flex-direction: column;
-    } 
-    .uno{
-    width: 100%;
-    color: #fff;
-    background-color: var(--first-color);
-    border-radius: 10px 10px 0px 0px;
-}
-.dos{
-    width: 100%;
-}
-}
+   .button{
+   width: 40%;
+   }
+} 
 @media screen and (min-width: 1200px){
-    .button{
-        width: 25%;
-    }
-     .unidad{
-        width: 70%;
-        flex-direction: row;
-    } 
-    .uno{
-    width: 25%;
-    color: #fff;
-    background-color: var(--first-color);
-    border-radius: 10px 0 0 10px;
-}
-.dos{
-    width: 75%;
-}
-}
+   .button{
+   width: 25%;
+} 
