@@ -145,12 +145,24 @@ textarea{
     border-radius: 10px;
     padding: 5px;
     outline-color: var(--first-color);
+}
+.textareaw{
+    resize: none;
+    width: 100%;
+    height: 8rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 5px;
+    outline-color: crimson;
 
 }
 
 /* ESTILO DE ADVERTENCIAS */
 .warning {
-    display: none;
+    display: none;              
+}
+.incorrectinput{
+  border: 1px solid red;  
 }
 /* Estilo de text area redimensionable*/
 .noscroll{
@@ -174,6 +186,11 @@ textarea{
 .warning.active p {
     display: block;
     color: crimson;
+}
+.activew{
+     display: block;
+    color: crimson;
+    outline-color: crimson;
 }
 @media screen and (min-width: 320px){
     .button{

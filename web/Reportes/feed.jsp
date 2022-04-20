@@ -52,7 +52,6 @@
             
     </div>   
         </c:forEach>
-
         <script src="script.js"></script>
            <script>
 $(function(){

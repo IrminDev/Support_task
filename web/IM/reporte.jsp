@@ -11,7 +11,7 @@
         <title>Formulario de reporte</title>
         <link rel="stylesheet" href="style.css">
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                <script src="validate.js"></script>
+            
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--Autor:Luu-->
@@ -30,7 +30,7 @@
         <h3 class="titulo">Reporte</h3>
         <div class="container">
      
-        <form action="action" method="Post">
+        <form  method="Post" id="formulario">
             <div>
                 <h3 class="Text">Fecha de inicio</h3>
                 <input class="fill date1" type="date" min="" id="fechaActual" name="correo1" placeholder="Correo electronico" readonly>
@@ -58,10 +58,11 @@
             </div>
             <div>
                  <h3 class="Text">Descripción</h3>
-                 <textarea placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"></textarea>
+                 <textarea placeholder="Describa la problematica a solucionar aquí" rows="20" name="des" id="content" class="fillarea"></textarea>
+                 <p id="warning-des" class="warning">a</p>
             </div>
             <div class="button-area">
-             <input class="button2" name="accion" id="BtnIniciar" type="submit" value="Cerrar reporte">
+             <input class="button2" onclick="return enviarForm()" name="accion" id="BtnIniciar" type="submit" value="Cerrar reporte">
             </div>
         </form>
         </div>
@@ -85,6 +86,7 @@ $(function(){
     });
 });
 </script>
+    <script src="validate.js"></script>
     </body>
 </html>
 
