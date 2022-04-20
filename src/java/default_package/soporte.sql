@@ -248,6 +248,32 @@ END
 && delimiter ;
 
 
+DROP PROCEDURE IF EXISTS listar2Reporte;
+delimiter &&
+CREATE PROCEDURE listar2Reporte(    
+idReporte int
+)
+BEGIN
+SELECT 
+reporte.id_reporte,
+relacion_reporte_mantenimiento.id_reporte_soporte,
+reporte.fecha_inicio,
+reporte.fecha_fin,
+reporte.descripcion,
+usuario.nombre,
+usuario.apellido,
+estatus.estatus
+FROM reporte
+INNER JOIN relacion_reporte_mantenimiento ON relacion_reporte_mantenimiento.id_reporte_mantenimiento = reporte.id_reporte
+INNER JOIN relacion_reporte_encargado ON relacion_reporte_encargado.id_reporte = reporte.id_reporte
+INNER JOIN usuario ON usuario.id_usuario = relacion_reporte_encargado.id_usuario
+INNER JOIN relacion_reporte_estatus ON relacion_reporte_estatus.id_reporte = reporte.id_reporte
+INNER JOIN estatus ON estatus.id_estatus = relacion_reporte_estatus.id_estatus
+WHERE reporte.id_reporte = idReporte;
+
+END
+&& delimiter ;
+
 -- PROCESO ALMACENADO QUE HACE UNA CONSULTA DE UN SOLO REPORTE
 
 DROP PROCEDURE IF EXISTS listarReporte;
@@ -362,8 +388,36 @@ WHERE usuario.id_usuario = idUsuario AND estatus.id_estatus=3;
 
 END
 && delimiter ;
-call listarReportesP(3);
+
+DROP PROCEDURE IF EXISTS cerrarReporteM4;
+delimiter &&
+CREATE PROCEDURE cerrarReporteM4(
+idReporte int,
+descripcionN nvarchar(1000),
+idReporteZ int
+)
+BEGIN
+
+UPDATE reporte
+SET descripcion = descripcionN
+WHERE id_reporte = idReporte;
+
+UPDATE relacion_reporte_estatus
+SET id_estatus = 4
+WHERE id_reporte = idReporte;
+
+UPDATE relacion_reporte_estatus
+SET id_estatus = 4
+WHERE id_reporte = idReporteZ;
+
+UPDATE reporte
+SET descripcion = descripcionN
+WHERE id_reporte = idReporteZ;
+
+END &&
+delimiter ;
+
+SELECT * FROM reporte;
+
+call altaReporteMantenimiento(1,"tabien",4);
 call listarReportesM(4);
-call altaReporteMantenimiento(3,"prueba",4);
-SELECT * FROM relacion_reporte_estatus;
-SELECT * FROM relacion_reporte_mantenimiento;
