@@ -21,7 +21,7 @@
                 <span>S</span>upport<span>W</span>ide
             </div>
             <div class="links">
-                <a href="listarReportes?accion=reportes">Ver Reportes </a>
+                <a href="listaIS?accion=reportes">Ver Reportes </a>
             </div>
         </nav>
     </header>

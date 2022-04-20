@@ -18,6 +18,15 @@ public class Reporte {
     private String apellidoEncargado;
     private int idEstatus;
     private String estatus;
+    private int idReporte2;
+
+    public int getIdReporte2() {
+        return idReporte2;
+    }
+
+    public void setIdReporte2(int idReporte2) {
+        this.idReporte2 = idReporte2;
+    }
 
    
 public String getApellidoEncargado() {

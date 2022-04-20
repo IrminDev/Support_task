@@ -304,3 +304,66 @@ WHERE usuario.id_usuario = idUsuario AND estatus.id_estatus = 2;
 
 END
 && delimiter ;
+
+-- PROCESO ALACENADO QUE NOS DA LA CONSULTA DEL IS DE LOS REPORTES QUE ESTAN EN ESTATUS "CERRADO"
+
+DROP PROCEDURE IF EXISTS listarReportesC;
+delimiter &&
+CREATE PROCEDURE listarReportesC(
+idUsuario int
+)
+
+BEGIN
+
+SELECT 
+reporte.id_reporte,
+reporte.fecha_inicio,
+reporte.fecha_fin,
+reporte.descripcion,
+usuario.nombre,
+usuario.apellido,
+usuario.id_usuario,
+estatus.estatus
+FROM reporte
+INNER JOIN relacion_reporte_encargado ON relacion_reporte_encargado.id_reporte = reporte.id_reporte
+INNER JOIN usuario ON usuario.id_usuario = relacion_reporte_encargado.id_usuario
+INNER JOIN relacion_reporte_estatus ON relacion_reporte_estatus.id_reporte = reporte.id_reporte
+INNER JOIN estatus ON estatus.id_estatus = relacion_reporte_estatus.id_estatus
+WHERE usuario.id_usuario = idUsuario AND estatus.id_estatus=4;
+
+END
+&& delimiter ;
+
+-- PROCESO ALACENADO QUE NOS DA LA CONSULTA DEL IS DE LOS REPORTES QUE ESTAN EN ESTATUS "Mantenimiento"
+
+DROP PROCEDURE IF EXISTS listarReportesM;
+delimiter &&
+CREATE PROCEDURE listarReportesM(
+idUsuario int
+)
+
+BEGIN
+
+SELECT 
+reporte.id_reporte,
+reporte.fecha_inicio,
+reporte.fecha_fin,
+reporte.descripcion,
+usuario.nombre,
+usuario.apellido,
+usuario.id_usuario,
+estatus.estatus
+FROM reporte
+INNER JOIN relacion_reporte_encargado ON relacion_reporte_encargado.id_reporte = reporte.id_reporte
+INNER JOIN usuario ON usuario.id_usuario = relacion_reporte_encargado.id_usuario
+INNER JOIN relacion_reporte_estatus ON relacion_reporte_estatus.id_reporte = reporte.id_reporte
+INNER JOIN estatus ON estatus.id_estatus = relacion_reporte_estatus.id_estatus
+WHERE usuario.id_usuario = idUsuario AND estatus.id_estatus=3;
+
+END
+&& delimiter ;
+call listarReportesP(3);
+call listarReportesM(4);
+call altaReporteMantenimiento(3,"prueba",4);
+SELECT * FROM relacion_reporte_estatus;
+SELECT * FROM relacion_reporte_mantenimiento;

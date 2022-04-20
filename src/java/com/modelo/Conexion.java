@@ -23,7 +23,7 @@ public class Conexion {
            //Cragamos la clase con el driver que conectará el sistema a la BD
            Class.forName("com.mysql.jdbc.Driver");
            //Colocamos la información necesaria para hacer la conexión
-           String url = "jdbc:mysql://localhost:3306/workwide?allowPublicKeyRetrieval=true&useSSL=false&zeroDateTimeBehavior=convertToNull&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+           String url = "jdbc:mysql://localhost:3306/soporte?allowPublicKeyRetrieval=true&useSSL=false&zeroDateTimeBehavior=convertToNull&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
            String user = "root";
            String pass = "n0m3l0";
            //Obtenemos la conexión apartir de los datos que colocamos anteriormente

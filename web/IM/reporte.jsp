@@ -4,6 +4,8 @@
     Author     : Luu
 --%>
 
+<%@page import="com.modelo.Reporte"%>
+<%@page import="com.modelo.IMDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,10 +32,21 @@
         <h3 class="titulo">Reporte</h3>
         <div class="container">
      
-        <form  method="Post" id="formulario">
+   <%
+         IMDao dao= new IMDao();
+         int id = Integer.parseInt((String)request.getAttribute("idrepo"));
+         Reporte r = (Reporte)dao.list(id);
+         
+     %>
+        <form action="IM">
+             <div>
+                 <!-- FORMULARIO CON LOS DATOS DEL REPORTE SELECIONADO PARA ENVIAR O CERRAR REPORTE -->
+           <input type="hidden" min="" id="fechaActual" value="<%= r.getIdReporte()%>" name="idr">
+           <input type="text" min="" id="fechaActual2" value="<%= r.getIdReporte2()%>" name="idr2">
+            </div>
             <div>
                 <h3 class="Text">Fecha de inicio</h3>
-                <input class="fill date1" type="date" min="" id="fechaActual" name="correo1" placeholder="Correo electronico" readonly>
+                <input class="fill date1" type="date" min="" id="fechaActual" value="<%= r.getInicio()%>" readonly>
             </div>
             <div class="warning" id="cwcorreo1">
                 <i class="fas fa-exclamation"></i>
@@ -43,7 +56,7 @@
                 <h3 class="Text">Ingeniero Responsable</h3>
                 <i class="fas fa-lock"></i>
                 <select class="fill">
-                    <option value="value">Luis Armando Contreras Ramos</option>
+                    <option value="" readonly>Luis Armando Contreras Ramos</option>
                 </select>
             </div>
             <div class="warning" id="cwcontral">
@@ -53,16 +66,16 @@
             <div>
                  <h3 class="Text">Estatus</h3>
                  <select class="fill">
-                    <option value="value">En proceso</option>
+                    <option value="" ><%= r.getEstatus()%></option>
+                    <option value="" >Mantenimiento</option>
                 </select>
             </div>
             <div>
                  <h3 class="Text">Descripción</h3>
-                 <textarea placeholder="Describa la problematica a solucionar aquí" rows="20" name="des" id="content" class="fillarea"></textarea>
-                 <p id="warning-des" class="warning">a</p>
+                 <textarea placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"  name="des"></textarea>
             </div>
             <div class="button-area">
-             <input class="button2" onclick="return enviarForm()" name="accion" id="BtnIniciar" type="submit" value="Cerrar reporte">
+            <input class="button" name="accion" id="BtnIniciar" type="submit" value="guardar">
             </div>
         </form>
         </div>
@@ -86,7 +99,6 @@ $(function(){
     });
 });
 </script>
-    <script src="validate.js"></script>
     </body>
 </html>
 
