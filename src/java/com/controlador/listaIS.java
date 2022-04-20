@@ -6,6 +6,8 @@ package com.controlador;
 import com.modelo.Reporte;
 import com.modelo.ReporteDao;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,29 +22,97 @@ import javax.servlet.RequestDispatcher;
  */
 @WebServlet(name = "listaIS", urlPatterns = {"/listaIS"})
 public class listaIS extends HttpServlet {
+  String listar="IS/Reportes/feed.jsp";
+  String reportes="IS/Reportes/Reportes/feed.jsp";
+  String add="IS/reportesoporte.jsp";
+  String edit="IS/reportesoporte.jsp";
+  Reporte repo = new Reporte(); 
+  ReporteDao rdao = new ReporteDao();
+  int id;
 
+  protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet AltaR</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet AltaR at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ReporteDao reporte = new ReporteDao();
-        String accion;
-        RequestDispatcher dispatcher=null;
-        /*ACCION DEFINIMOS ESTO PARA QUE EL SERVLET SEPA A QUE PÁGINAS TIENE QUE HACER  LAS INDICACIONES*/
-        accion = request.getParameter("accion");
-          if(accion == null || accion.isEmpty()){
-         /*SI PONEMOS /listaIS DEBE DIRECCIONAR A ESTA PAGINA*/
-          dispatcher = request.getRequestDispatcher("index.jsp");
-       
+    String acceso="";  
+    String accion = request.getParameter("accion");
+    
+    /*Acceso a diferentes pagina modulo de consultas*/
+    if(accion.equalsIgnoreCase("pendientes")){
+        List<Reporte> lista = new ArrayList<>();
+        lista= rdao.listarReportesP();
+        acceso=listar;
+        request.setAttribute("lista",lista);
+        
+    }else
+        /*SI QUEREMOS VER LOS REPORTES QUE SE CERRARON O SE ENVIARON*/
+        if(accion.equalsIgnoreCase("reportes")){
+        List<Reporte> lista = new ArrayList<>();
+        lista= rdao.listarReportes();
+        acceso=reportes;
+        request.setAttribute("lista",lista);
+        
+    }else
+            /*CUANDO QUEREMOS IR AL FORMULARIO PARA ENVIAR O CERRAR Y QUEREMOS DESPLEGAR LOS DATOS DE ESTE NECESITAMOS EL
+            PARAMETRO DEL ID*/
+        if(accion.equalsIgnoreCase("altar")){
+            /*CON ESTO TOMAMOS EL ID TOMANDO EL ATRIBUTO IDREPO*/
+            request.setAttribute("idrepo",request.getParameter("id"));
+            acceso=add;
+            
         }else
-             if("soporte".equals(accion)){
-            dispatcher = request.getRequestDispatcher("IS/Reportes/feed.jsp");
-            /*LLAMAMOS AL METODO LISTAR QUE CONTIENE LOS DATOS QUE QUEREMOS MOSTRAR*/
-            List<Reporte>lista = reporte.listarReporteIngenieroSop();
-            request.setAttribute("lista", lista);
-            /* SE LE DA ATRIBUTO "LISTA"  PARA QUE CUANDO LOS DESPLEGEMOS EN EL JSP ESTA SERA LA REFERENCIA DEL ARRAYLIST*/
-             }
-          
-        dispatcher.forward(request, response);
+            /*CUANDO QUEREMOS ENVIAR EL REPORTE A MANTENIMIENTO*/
+            if(accion.equalsIgnoreCase("Enviar")){
+                /*TENEMOS DOS PARAMETROS UNO EL ID Y LA DESCRIPCION*/
+               int id= Integer.parseInt(request.getParameter("idr"));
+                String des = request.getParameter("des");
+                repo.setIdReporte(id);
+                repo.setDescripcion(des);
+                /*ENVIAMOS LOS DATOS AL ALTAMANTENIMIENTO PARA QUE SE GENERE UN REPORTE DE TIPO MANTENIMIENTO*/
+                rdao.altaMantenimiento(repo);
+                
+                /*UNA VEZ HECHO EL FORMULARIO NOS LLEVARA A LA PAGINA DE CONSULTAS PENDIENTES*/
+                List<Reporte> lista = new ArrayList<>();
+                lista= rdao.listarReportesP();
+                acceso=listar;
+                request.setAttribute("lista",lista);
+                
+            }else
+                /*CUANDO QUEREMOS CERRAR EL REPORTE*/
+                if(accion.equalsIgnoreCase("Cerrar")){
+                /*IGUAL TENEMOS DOS PARAMETROS EL ID Y LA DESCRIPCION*/
+                id= Integer.parseInt(request.getParameter("idr"));
+                String des = request.getParameter("des");
+                repo.setIdReporte(id);
+                repo.setDescripcion(des);
+                /*AENVIAMOS LOS DATOS AL METODO CERRARREPORTE PARA GENERAR UN CABIO DE ESTADO Y DESCRIPCION*/
+                rdao.cerrarReporte(repo);
+               
+                /*UNA VEZ HECHO EL FORMULARIO NOS LLEVARA A LA PAGINA DE CONSULTAS PENDIENTES*/
+                List<Reporte> lista = new ArrayList<>();
+                lista= rdao.listarReportesP();
+                acceso=listar;
+                request.setAttribute("lista",lista);
+                
+            }
+      RequestDispatcher vista = request.getRequestDispatcher(acceso);
+          vista.forward(request, response);
+        
     
     }
 

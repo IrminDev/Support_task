@@ -118,7 +118,6 @@ CALL altaUsuario("Luis", "Contreras", "luscont@workwide.com", "LUICONWW-123", 3)
 
 
 
-
 DROP PROCEDURE IF EXISTS altaReporte;
 delimiter &&
 CREATE PROCEDURE altaReporte(
@@ -142,17 +141,16 @@ INSERT INTO relacion_reporte_estatus VALUES
 
 END &&
 delimiter ;
-call altaReporte("holamaidnd",3);
+call altaReporte("si sirve xd",3);
 
-select*from reporte;
-
+-- PROCESO ALMACENADO DE DAR ALTA UN REPORTE DE MANTENIMIENTO
 
 DROP PROCEDURE IF EXISTS altaReporteMantenimiento;
 delimiter &&
 CREATE PROCEDURE altaReporteMantenimiento(
 id_reporteSop int,
 descripcionN nvarchar(1000),
-encargado int
+encargadoN int
 )
 BEGIN
 
@@ -167,16 +165,22 @@ INSERT INTO relacion_reporte_tipo VALUES
 (@id_reporte, 2);
 
 INSERT INTO relacion_reporte_estatus VALUES
-(@id_reporte, 1);
+(@id_reporte, 3);
 
 INSERT INTO relacion_reporte_mantenimiento VALUES
-(id_reporteSop, id_reporte);
+(id_reporteSop, @id_reporte);
+
+UPDATE relacion_reporte_estatus
+SET id_estatus = 3
+WHERE id_reporte = id_reporteSop;
 
 END &&
 delimiter ;
 
+select*from reporte;
 
 
+-- PROCESO ALMACENADO QUE HACE CERRAR UN REPORTE
 
 DROP PROCEDURE IF EXISTS cerrarReporte;
 delimiter &&
@@ -199,7 +203,6 @@ delimiter ;
 
 
 
-
 DROP PROCEDURE IF EXISTS cambiarEstatusReporte;
 delimiter &&
 CREATE PROCEDURE cambiarEstatusReporte(
@@ -215,9 +218,70 @@ WHERE id_reporte = idReporte;
 END &&
 delimiter ; 
 
+-- PROCESO ALACENADO QUE NOS DA LA CONSULTA DEL IS DE LOS REPORTES QUE ESTAN EN ESTATUS "CERRADO O MANTENIMIENTO"
+
 DROP PROCEDURE IF EXISTS listarReportes;
 delimiter &&
-CREATE PROCEDURE listarReportes(    
+CREATE PROCEDURE listarReportes(
+idUsuario int
+)
+
+BEGIN
+
+SELECT 
+reporte.id_reporte,
+reporte.fecha_inicio,
+reporte.fecha_fin,
+reporte.descripcion,
+usuario.nombre,
+usuario.apellido,
+usuario.id_usuario,
+estatus.estatus
+FROM reporte
+INNER JOIN relacion_reporte_encargado ON relacion_reporte_encargado.id_reporte = reporte.id_reporte
+INNER JOIN usuario ON usuario.id_usuario = relacion_reporte_encargado.id_usuario
+INNER JOIN relacion_reporte_estatus ON relacion_reporte_estatus.id_reporte = reporte.id_reporte
+INNER JOIN estatus ON estatus.id_estatus = relacion_reporte_estatus.id_estatus
+WHERE usuario.id_usuario = idUsuario AND estatus.id_estatus>=3;
+
+END
+&& delimiter ;
+
+
+-- PROCESO ALMACENADO QUE HACE UNA CONSULTA DE UN SOLO REPORTE
+
+DROP PROCEDURE IF EXISTS listarReporte;
+delimiter &&
+CREATE PROCEDURE listarReporte(    
+idReporte int
+)
+
+BEGIN
+
+SELECT 
+reporte.id_reporte,
+reporte.fecha_inicio,
+reporte.fecha_fin,
+reporte.descripcion,
+usuario.nombre,
+usuario.apellido,
+estatus.estatus
+FROM reporte
+INNER JOIN relacion_reporte_encargado ON relacion_reporte_encargado.id_reporte = reporte.id_reporte
+INNER JOIN usuario ON usuario.id_usuario = relacion_reporte_encargado.id_usuario
+INNER JOIN relacion_reporte_estatus ON relacion_reporte_estatus.id_reporte = reporte.id_reporte
+INNER JOIN estatus ON estatus.id_estatus = relacion_reporte_estatus.id_estatus
+WHERE reporte.id_reporte = idReporte;
+
+END
+&& delimiter ;
+
+
+
+-- PROCESO ALMACENADO QUE NOS DA LA CONSULTA DE LOS REPORTES EN ESTATUS "PROCESO"
+DROP PROCEDURE IF EXISTS listarReportesP;
+delimiter &&
+CREATE PROCEDURE listarReportesP(    
 idUsuario int
 )
 
@@ -236,51 +300,7 @@ INNER JOIN relacion_reporte_encargado ON relacion_reporte_encargado.id_reporte =
 INNER JOIN usuario ON usuario.id_usuario = relacion_reporte_encargado.id_usuario
 INNER JOIN relacion_reporte_estatus ON relacion_reporte_estatus.id_reporte = reporte.id_reporte
 INNER JOIN estatus ON estatus.id_estatus = relacion_reporte_estatus.id_estatus
-WHERE usuario.id_usuario = 3;
+WHERE usuario.id_usuario = idUsuario AND estatus.id_estatus = 2;
 
 END
 && delimiter ;
-
-CALL listarReportes(3);
-
-DROP PROCEDURE IF EXISTS comprobarRegistro;
-delimiter $$
-CREATE PROCEDURE comprobarRegistro(
-correo nvarchar(40),
-contrasena nvarchar(200)
-)
-begin
-SELECT
-usuario.id_usuario,
-relacion_usuario_tipo.id_tipo
-FROM usuario
-INNER JOIN relacion_usuario_tipo on usuario.id_usuario = relacion_usuario_tipo.id_usuario
-WHERE usuario.correo = correo
-AND contrasena= contrasena;
-end $$
-delimiter ;
-
-call comprobarRegistro ("irminhdz@workwide.com", "IRHERWW-013");
-
-DROP PROCEDURE IF EXISTS iniciarUsuario;
-delimiter $$
-CREATE PROCEDURE iniciarUsuario(
-id int
-)
-begin
-SELECT
-usuario.nombre,
-usuario.apellido,
-usuario.correo,
-tipo_usuario.tipo
-FROM usuario
-INNER JOIN relacion_usuario_tipo ON relacion_usuario_tipo.id_usuario = usuario.id_usuario
-INNER JOIN tipo_usuario ON tipo_usuario.id_tipo = relacion_usuario_tipo.id_tipo
-WHERE usuario.id_usuario = id;
-end $$
-delimiter ;
-call iniciarUsuario(1);
-select*from reporte;
-
--- Cambiamos la base datos porque la otra marcaba errores
--- Funciona de manera correcta

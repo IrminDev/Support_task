@@ -6,93 +6,152 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.*;
 
 /**
  *
  * @author Luu
  */
-public class ReporteDao {
-    /*Establecemos la conexion a la BD*/
-    Connection conexion;
+public class ReporteDao extends Conexion{
+     
+    Reporte repor = new Reporte(); 
     
-    public ReporteDao(){
-        conex con = new conex();
-        try{
-            conexion = con.getConexion();
-        }
-        catch(Exception ex){
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    /*Arreglo que nos dara la información de los reportes en la BD que tiene el Ingeniero de soporte*/    
-           public List<Reporte> listarReporteIngenieroSop(){
-           PreparedStatement ps;
-           ResultSet rs;
-           List<Reporte> lista = new ArrayList<>();
+    /*METODO PARA GENERAR UNA LISTA DE LOS REPORTES PENDIENTES O QUE ESTAN EN EL ESTATUS PROCESO*/
+    public List<Reporte> listarReportesP(){
+        /*ARRAY QUE CONTENDRA LOS DATOS QUE QUEREMOS*/
+        List<Reporte> lista = new ArrayList<>();
+        /*PROCESO ALMACENADO QUE NOS MOSTRARA LOS REPORTES DEL INGENIERO DE SOPORTE*/
+        String sql = "CALL listarReportesP(3);";
+        PreparedStatement ps;
+        ResultSet rs;
+          
            try{
-               /*iNSTRUCCION EN MYSQL PARA RECABAR CIERTOS DATOS*/
-               ps = conexion.prepareStatement("SELECT reporte.id_reporte, reporte.fecha_inicio," +
-                "reporte.fecha_fin,reporte.descripcion,usuario.nombre,usuario.apellido,estatus.estatus FROM reporte INNER JOIN relacion_reporte_encargado ON relacion_reporte_encargado.id_reporte = reporte.id_reporte\n" +
-                "INNER JOIN usuario ON usuario.id_usuario = relacion_reporte_encargado.id_usuario INNER JOIN relacion_reporte_estatus ON relacion_reporte_estatus.id_reporte = reporte.id_reporte\n" +
-                "INNER JOIN estatus ON estatus.id_estatus = relacion_reporte_estatus.id_estatus WHERE usuario.id_usuario = 3;");
-               rs = ps.executeQuery();
+            this.conectar();
+            ps = this.getCon().prepareCall(sql);
+            rs = ps.executeQuery();
                while(rs.next()){
-                   /*Datos que queremos recabar*/
-                  int id = rs.getInt("id_reporte");
-                   String des = rs.getString("descripcion");
-                   Date inicio = rs.getDate("fecha_inicio");
-                   Date fin = rs.getDate("fecha_fin");
-                   String nombreEncargado = rs.getString("nombre");
-                   String apellidoEncargado = rs.getString("apellido");
-                   String estatus = rs.getString("estatus");
-                   /* almacenamos los datos consultados*/
-                Reporte reporte = new Reporte(id,des,inicio,fin,nombreEncargado,apellidoEncargado,estatus);           
-                           
-                lista.add(reporte);
+                /*DATOS QUE QUEREMOS CONSULTAR*/
+                Reporte report = new Reporte();
+                report.setIdReporte(rs.getInt(1));
+                report.setInicio(rs.getDate(2));
+                report.setFin(rs.getDate(3));
+                report.setDescripcion(rs.getString(4));
+                report.setNombreEncargado(rs.getString(5));
+                report.setApellidoEncargado(rs.getString(6));
+                report.setEstatus(rs.getString(7));
+                lista.add(report);
+                /*GUARDAMOS LOS DATOS*/
             }
-            return lista;
+            
                
            } catch(Exception e){
         System.out.println(e.toString());
-               return null;
+              
            }
+           return lista;
     }
-    /*
-        public Reporte mostrarReporte(int _id){
-           PreparedStatement ps;
-           ResultSet rs;
-           Reporte rep = null;
+    
+    /*METODO PARA GENERAR UNA LISTA DE LOS REPORTES QUE ESTAN EN ESTATUS "CERRADO O MANTENIMIENTO"*/
+    public List<Reporte> listarReportes(){
+        /*ARRAY QUE CONTENDRA LOS DATOS QUE QUEREMOS*/
+        List<Reporte> lista = new ArrayList<>();
+        /*PROCESO ALMACENADO QUE NOS MOSTRARA LOS REPORTES DEL INGENIERO DE SOPORTE*/
+        String sql = "CALL listarReportes(3);";
+        PreparedStatement ps;
+        ResultSet rs;
+          
            try{
-               ps = conexion.prepareStatement("SELECT id_reporte, descripcion, fecha_inicio, fecha_fin FROM reporte WHERE id=?");
-               ps.setInt(1, _id);
-               rs = ps.executeQuery();
+            this.conectar();
+            ps = this.getCon().prepareCall(sql);
+            rs = ps.executeQuery();
                while(rs.next()){
-                   int id = rs.getInt("id_reporte");
-                   String des = rs.getString("descripcion");
-                   Reporte report = new Reporte();
-                   report.setInicio(rs.getDate("fecha_inicio"));
-                   report.setFin(rs.getDate("fecha_fin"));
-                   rep =new Reporte();
-               }
-               return rep;
+                /*DATOS QUE QUEREMOS CONSULTAR*/
+                Reporte report = new Reporte();
+                report.setIdReporte(rs.getInt(1));
+                report.setInicio(rs.getDate(2));
+                report.setFin(rs.getDate(3));
+                report.setDescripcion(rs.getString(4));
+                report.setNombreEncargado(rs.getString(5));
+                report.setApellidoEncargado(rs.getString(6));
+                report.setEstatus(rs.getString(8));
+                lista.add(report);
+                /*GUARDAMOS LOS DATOS*/
+            }
+            
                
            } catch(Exception e){
-               e.printStackTrace();
-               return null;
+        System.out.println(e.toString());
+              
            }
+           return lista;
     }
-   /*             public boolean insertarR(Reporte report){
-            PreparedStatement ps;
-            try{
-                ps = conexion.preparedStatement("INSERT INTO");
+    
+    /*METODO QUE NOS TRAERA LOS DATOS DE UN SOLO REPORTE Y ESTE DEPENDERA DEL ID DEL REPORTE QUE QUEREMOS*/
+    public Reporte list(int id){
+        /*PROCESO ALMACENADO QUE TIENE COMO PARAMETRO EL ID DEL REPORTE QUE QUEREMOS CONSULTAR*/
+        String sql = "CALL listarReporte(?);";
+        PreparedStatement ps;
+        ResultSet rs;
+        
+           try{
+            this.conectar();
+            ps = this.getCon().prepareCall(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+               while(rs.next()){
+               /*DATOS QUE QUEREMOS CONSULTAR DE DICHO REPORTE*/
+                repor.setIdReporte(rs.getInt(1));
+                repor.setInicio(rs.getDate(2));
+                repor.setFin(rs.getDate(3));
+                repor.setDescripcion(rs.getString(4));
+                repor.setNombreEncargado(rs.getString(5));
+                repor.setApellidoEncargado(rs.getString(6));
+                repor.setEstatus(rs.getString(7));
+                   /*SE ALMACENAN EN EL OBJETO REPOR PARA QUE CUANDO QUERAMOS CONSULTARLOS*/
+            }
+            
+             
+           } catch(Exception e){
+        System.out.println(e.toString());
+              
+           }
+              
+           return repor;
+    }
+    
+    /*METODO QUE NOS GENERARA UN NUEVO REPORTE DE MANTENIMIENTO*/
+    public boolean altaMantenimiento(Reporte repo){
+        /*PROCESO ALMACENADO QUE TIENE COMO PARAMETRO EL ID DEL REPORTE DE SOPORTE Y LA DESCRICPCION QUE SE CAMBIO*/
+        String sql = "CALL altaReporteMantenimiento('"+repo.getIdReporte()+"','"+repo.getDescripcion()+"',4)";
+        PreparedStatement ps;
+        
+           try{
+            this.conectar();
+            ps = this.getCon().prepareCall(sql);
+            /*SE GENERA UN NUEVO REPORTE */
+            ps.executeUpdate();  
                 
             }catch(Exception e){
-                e.printStackTrace();
                 
             }
-        }
-}*/
-
-}
+           return false;
+    }
+    
+    /*METODO QUE NOS ACTUALIZARA NUESTRO REPORTE A ESTATUS CERRADO Y CON LA NUEVA DESCRIPCION*/
+    public boolean cerrarReporte(Reporte repo){
+        /*PROCESO ALMACENADO QUE NOS PERMITIRA CERRAR EL REPORTE PERO QUE TIENE COMO PARAMETRO EL ID DEL REPORTE A CAMBIAR*/
+        String sql = "CALL cerrarReporte('"+repo.getIdReporte()+"','"+repo.getDescripcion()+"')";
+        PreparedStatement ps;
+        
+           try{
+            this.conectar();
+            ps = this.getCon().prepareCall(sql);
+            /*ACTUALIZA EL ESTATUS Y LA DESCRIPCION DEL NUEVO REPORTE*/
+            ps.executeUpdate();   
+                
+            }catch(Exception e){
+                
+            }
+           return false;
+    }
+} 

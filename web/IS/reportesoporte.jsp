@@ -4,12 +4,14 @@
     Author     : Luu & Dani
 --%>
 
+<%@page import="com.modelo.Reporte"%>
+<%@page import="com.modelo.ReporteDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Formulario de reporte</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href='IS/style.css'>
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 <script src="validate.js"></script>
         <meta charset="UTF-8">
@@ -22,18 +24,30 @@
                 <span>S</span>upport<span>W</span>ide
             </div>
             <div class="links">
-                <a href="#">Ver reportes </a>
+                <a href="">Ver Reportes </a>
             </div>
         </nav>
     </header>
     <body>
+        
         <h3 class="titulo">Reporte</h3>
         <div class="container">
-     
-        <form action="action" method="Post">
+            <!-- METODO QUE NO HACE TRAER LOS DATOS PARA REFLEJARLOS EN EL FORMULARIO -->
+            <!-- CON EL "IDREPO" RECOGEMOS EL ID DEL REPORTE SELECCIONADO PARA REFLEJAR LOS DATOS DEL REPORTE -->
+     <%
+         ReporteDao dao= new ReporteDao();
+         int id = Integer.parseInt((String)request.getAttribute("idrepo"));
+         Reporte r = (Reporte)dao.list(id);
+         
+     %>
+        <form action="listarReportes">
+             <div>
+                 <!-- FORMULARIO CON LOS DATOS DEL REPORTE SELECIONADO PARA ENVIAR O CERRAR REPORTE -->
+           <input type="hidden" min="" id="fechaActual" value="<%= r.getIdReporte()%>" name="idr">
+            </div>
             <div>
                 <h3 class="Text">Fecha de inicio</h3>
-                <input class="fill date1" type="date" min="" id="fechaActual" name="correo1" placeholder="Correo electronico" readonly>
+                <input class="fill date1" type="date" min="" id="fechaActual" value="<%= r.getInicio()%>" readonly>
             </div>
             <div class="warning" id="cwcorreo1">
                 <i class="fas fa-exclamation"></i>
@@ -43,7 +57,7 @@
                 <h3 class="Text">Ingeniero Responsable</h3>
                 <i class="fas fa-lock"></i>
                 <select class="fill">
-                    <option value="value">Luis Armando Contreras Ramos</option>
+                    <option value="" readonly>Luis Armando Contreras Ramos</option>
                 </select>
             </div>
             <div class="warning" id="cwcontral">
@@ -53,16 +67,17 @@
             <div>
                  <h3 class="Text">Estatus</h3>
                  <select class="fill">
-                    <option value="value">Pon los estatus que yo no me los sé xd</option>
+                    <option value="" ><%= r.getEstatus()%></option>
+                    <option value="" >Mantenimiento</option>
                 </select>
             </div>
             <div>
                  <h3 class="Text">Descripción</h3>
-                 <textarea placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"></textarea>
+                 <textarea placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"  name="des"></textarea>
             </div>
             <div class="button-area">
-            <input class="button" name="accion" id="BtnIniciar" type="submit" value="Enviar reporte">
-             <input class="button2" name="accion" id="BtnIniciar" type="submit" value="Cerrar reporte">
+            <input class="button" name="accion" id="BtnIniciar" type="submit" value="Enviar">
+            <input class="button" name="accion" id="BtnIniciar" type="submit" value="Cerrar">
             </div>
         </form>
         </div>

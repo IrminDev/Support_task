@@ -19,15 +19,6 @@ public class Reporte {
     private int idEstatus;
     private String estatus;
 
-    Reporte(int id, String descripcion, Date inicio, Date fin, String nombreEncargado, String apellidoEncargado, String estatus) {
-       this.idReporte = id;
-       this.descripcion = descripcion;
-       this.inicio = inicio;
-       this.fin = fin;
-       this.nombreEncargado = nombreEncargado;
-       this.apellidoEncargado = apellidoEncargado;
-       this.estatus = estatus;
-    }
    
 public String getApellidoEncargado() {
         return apellidoEncargado;
