@@ -3,6 +3,8 @@
     Created on : 15/04/2022, 09:54:49 PM
     Author     : Luu
 --%>
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -21,7 +23,7 @@
                 <span>S</span>upport<span>W</span>ide
             </div>
             <div class="links">
-                <a href="listarReportes?accion=reportes">Ver Reportes </a>
+                <a href="listaIS?accion=reportes">Ver Reportes </a>
             </div>
         </nav>
     </header>
@@ -42,7 +44,7 @@
                 <h3 class="Text">Fecha de inicio: <c:out value="${report.inicio}" /></h3>
                  <h3 class="Text">Descripción</h3>
                  <textarea  rows="20" id="content" class="fillarea" readonly> <c:out value="${report.descripcion}" /></textarea>
-                 <a href="listaIS?accion=altar&id=<c:out value="${report.idReporte}"/>">Enviar</a>
+                 <a href="listarReportes?accion=altar&id=<c:out value="${report.idReporte}"/>">Enviar</a>
             </div>
             </div>
         </div>
@@ -71,3 +73,4 @@ $(function(){
     </body>
     
 </html>
+

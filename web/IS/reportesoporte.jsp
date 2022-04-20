@@ -40,7 +40,7 @@
          Reporte r = (Reporte)dao.list(id);
          
      %>
-        <form action="listarReportes">
+        <form action="listaIS">
              <div>
                  <!-- FORMULARIO CON LOS DATOS DEL REPORTE SELECIONADO PARA ENVIAR O CERRAR REPORTE -->
            <input type="hidden" min="" id="fechaActual" value="<%= r.getIdReporte()%>" name="idr">
