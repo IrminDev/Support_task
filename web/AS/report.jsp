@@ -4,6 +4,8 @@
     Author     : Luu & Moni
 --%>
 
+<%@page import="com.modelo.Reporte"%>
+<%@page import="com.modelo.ASDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +16,6 @@
                 <script src="validate.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--Autor:Luu-->
     </head>
     <header>
         <nav class="nav">
@@ -30,6 +31,13 @@
         <h3 class="titulo">Reporte</h3>
         <div class="container">
      
+    <%
+        ASDao dao= new ASDao();
+        int id = Integer.parseInt((String)request.getAttribute("iduser"));
+        Reporte repo = (Reporte)dao.list(id);
+         
+     %>          
+  <!--Autor:Moni-->   
         <form action="action" method="Post">
             <div>
                 <h3 class="Text">Fecha de inicio</h3>
