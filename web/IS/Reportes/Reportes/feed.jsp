@@ -44,7 +44,6 @@
                 <h3 class="Text">Fecha de inicio: <c:out value="${report.inicio}" /></h3>
                  <h3 class="Text">Descripción</h3>
                  <textarea  rows="20" id="content" class="fillarea" readonly> <c:out value="${report.descripcion}" /></textarea>
-                 <a href="listarReportes?accion=altar&id=<c:out value="${report.idReporte}"/>">Enviar</a>
             </div>
             </div>
         </div>

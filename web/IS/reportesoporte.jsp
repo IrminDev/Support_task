@@ -73,14 +73,17 @@
             </div>
             <div>
                  <h3 class="Text">Descripción</h3>
-                 <textarea placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"  name="des"></textarea>
+                 <textarea placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"  name="des"><%= r.getDescripcion()%></textarea>
+                                  <p class="warning" id="warning-des"></p>
+
             </div>
             <div class="button-area">
-            <input class="button" name="accion" id="BtnIniciar" type="submit" value="Enviar">
-            <input class="button" name="accion" id="BtnIniciar" type="submit" value="Cerrar">
+            <input onclick="return enviarForm()" class="button" name="accion" id="BtnIniciar" type="submit" value="Enviar">
+            <input onclick="return enviarForm()" class="button" name="accion" id="BtnIniciar" type="submit" value="Cerrar">
             </div>
         </form>
         </div>
+                    <script src="IS/validate.js"></script>           
 
          <script>
 $(function(){

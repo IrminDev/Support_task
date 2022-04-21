@@ -4,17 +4,7 @@
  * Autor: Luu
  */
 //
-window.onload = function(){
-  var fecha = new Date(); //Fecha actual
-  var mes = fecha.getMonth()+1; //obteniendo mes
-  var dia = fecha.getDate(); //obteniendo dia
-  var ano = fecha.getFullYear(); //obteniendo año
-  if(dia<10)
-    dia='0'+dia; //agrega cero si el menor de 10
-  if(mes<10)
-    mes='0'+mes; //agrega cero si el menor de 10
-  document.getElementById('fechaActual').value=ano+"-"+mes+"-"+dia;
-};
+
 var des = document.getElementById('content');
 var war = document.getElementById('warning-des');
 let wardes = "";
@@ -52,14 +42,14 @@ function enviarForm(){
        war.classList.add('activew');
        war.innerHTML="Describe la situacion del reporte";
            console.log("Si");
-return false;
+
    } else{
                   console.log("si paso");
                   war.innerHTML= wardes;
                   des.classList.remove('incorrectinput');
                   war.classList.add('warning');
                   war.classList.remove('activew');
-    return false;
+
    }
    
 }

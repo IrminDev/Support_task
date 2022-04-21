@@ -16,7 +16,8 @@ id_reporte int primary key not null auto_increment,
 descripcion nvarchar(1000),
 fecha_inicio date,
 fecha_fin date
-);
+);_inicio date,
+fecha_f
 
 -- TABLAS SIN LLAVES FORÁNEAS
 CREATE TABLE estatus(
@@ -419,5 +420,7 @@ delimiter ;
 
 SELECT * FROM reporte;
 
-call altaReporteMantenimiento(1,"tabien",4);
+call altaReporteMantenimiento(6,"tabien1",4);
 call listarReportesM(4);
+call altaReporte("Ya acabamos",3);
+call listarReportesP(3);

@@ -11,7 +11,7 @@
 <html>
     <head>
         <title>Formulario de reporte</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="IM/style.css">
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             
         <meta charset="UTF-8">
@@ -42,7 +42,7 @@
              <div>
                  <!-- FORMULARIO CON LOS DATOS DEL REPORTE SELECIONADO PARA ENVIAR O CERRAR REPORTE -->
            <input type="hidden" min="" id="fechaActual" value="<%= r.getIdReporte()%>" name="idr">
-           <input type="text" min="" id="fechaActual2" value="<%= r.getIdReporte2()%>" name="idr2">
+           <input type="hidden" min="" id="fechaActual2" value="<%= r.getIdReporte2()%>" name="idr2">
             </div>
             <div>
                 <h3 class="Text">Fecha de inicio</h3>
@@ -61,7 +61,7 @@
             </div>
             <div class="warning" id="cwcontral">
                 <i class="fas fa-exclamation"></i>
-                <p id="warning-contral"></p>
+                <p id="warning-contral"></p>    
             </div>
             <div>
                  <h3 class="Text">Estatus</h3>
@@ -72,14 +72,15 @@
             </div>
             <div>
                  <h3 class="Text">Descripción</h3>
-                 <textarea placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"  name="des"></textarea>
+                 <textarea placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"  name="des"><%= r.getDescripcion()%></textarea>
+                 <p class="warning" id="warning-des"></p>
             </div>
             <div class="button-area">
-            <input class="button" name="accion" id="BtnIniciar" type="submit" value="guardar">
+            <input onclick="return enviarForm()" class="button" name="accion" id="BtnIniciar" type="submit" value="guardar">
             </div>
         </form>
         </div>
-
+                    <script src="IM/validate.js"></script>           
          <script>
 $(function(){
     var textArea = $('#content'),
