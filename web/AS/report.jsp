@@ -11,9 +11,9 @@
 <html>
     <head>
         <title>Formulario de reporte</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="AS/style.css">
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                <script src="validate.js"></script>
+                <script src="AS/validate.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -32,13 +32,10 @@
         <div class="container">
      
     <%
-        ASDao dao= new ASDao();
-        int id = Integer.parseInt((String)request.getAttribute("iduser"));
-        Reporte repo = (Reporte)dao.list(id);
-         
+        ASDao dao= new ASDao();         
      %>          
   <!--Autor:Moni-->   
-        <form action="action" method="Post">
+        <form action="AS" method="Get" id="altaZo">
             <div>
                 <h3 class="Text">Fecha de inicio</h3>
                 <input class="fill date1" type="date" min="" id="fechaActual" name="correo1" placeholder="Correo electronico" readonly>
@@ -61,14 +58,14 @@
             <div>
                  <h3 class="Text">Estatus</h3>
                  <select class="fill">
-                    <option value="value">Abierto</option>
+                    <option value="value" readonly>Abierto</option>
                 </select>
             </div>
             <div>
                  <h3 class="Text">Descripción</h3>
-                 <textarea placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"></textarea>
+                 <textarea form="altaZo" name="des" placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"></textarea>
             </div>
-            <input class="button" name="accion" id="BtnIniciar" type="submit" value="Enviar reporte">
+            <input class="button" name="accion" id="BtnIniciar" type="submit" value="Enviar">
           
         </form>
         </div>

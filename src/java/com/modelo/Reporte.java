@@ -135,4 +135,8 @@ public String getApellidoEncargado() {
     public void setEstatus(String estatus) {
         this.estatus = estatus;
     }    
+
+    public void setIdUser(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -32,7 +32,7 @@
             </div>
             <!-- link que se encuentra en el header que te lleva a los reposrtes acumulados -->
             <div class="link">
-                    <a href="listaIS?accion=soporte" class="nav_link">Ver reportes</a>
+                    <a href="AS/report.jsp" class="nav_link">Ver reportes</a>
             </div>
         </nav>
     </header>

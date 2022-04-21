@@ -71,12 +71,10 @@ public class AS extends HttpServlet {
             /*CUANDO QUEREMOS ENVIAR EL REPORTE A ING. DE SOPORTE*/
             if (accion.equalsIgnoreCase("Enviar")){
                /*TENEMOS DOS PARAMETROS UNO EL ID Y LA DESCRIPCION*/
-               int id= Integer.parseInt(request.getParameter("idr"));
                String des = request.getParameter("des");
-               repo.setIdReporte(id);
                repo.setDescripcion(des);
                /*ENVIAMOS LOS DATOS AL ING. DE SOPORTE*/
-               rdao.altaSoporte(repo);  
+               rdao.altaReporte(repo);  
             }
       RequestDispatcher vista = request.getRequestDispatcher(acceso);
           vista.forward(request, response);
@@ -90,7 +88,7 @@ public class AS extends HttpServlet {
     }
 
     /**
-     * Returns a short description of the servlet.
+     * Pequeña descripción del servlet
      *
      * @return a String containing servlet description
      */

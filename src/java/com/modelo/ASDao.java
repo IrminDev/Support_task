@@ -17,7 +17,7 @@ public class ASDao extends Conexion{
     /*METODO QUE NOS GENERARA UN NUEVO REPORTE DE MANTENIMIENTO*/
     public boolean altaReporte(Reporte repo){
         /*PROCESO ALMACENADO QUE TIENE COMO PARAMETRO LA DESCRICPCION DEL REPORTE DE SOPORTE*/
-        String sql = "CALL altaReporte('"+repo.getDescripcion()+"',3)";
+        String sql = "CALL altaReporte('"+repo.getDescripcion()+"',2)";
         PreparedStatement ps;
         
            try{
@@ -31,12 +31,10 @@ public class ASDao extends Conexion{
             }
            return false;
     }
-     public Reporte list(int id){
-        /*PROCESO ALMACENADO QUE TIENE COMO PARAMETRO EL ID DEL USER*/
+    public Reporte list(int id){
         String sql = "CALL listarReportes(?);";
         PreparedStatement ps;
         ResultSet rs;
-        
            try{
             this.conectar();
             ps = this.getCon().prepareCall(sql);
@@ -58,10 +56,6 @@ public class ASDao extends Conexion{
         System.out.println(e.toString()); 
            }   
            return repor;
-    }
-    public void altaSoporte(Reporte repo) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    //ENVIAR LOS DATOS AL ING. DE SOPORTE
     }
 
     public List<Reporte> listarReportes() {
