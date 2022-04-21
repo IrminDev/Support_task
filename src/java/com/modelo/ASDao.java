@@ -59,4 +59,13 @@ public class ASDao extends Conexion{
            }   
            return repor;
     }
+    public void altaSoporte(Reporte repo) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    //ENVIAR LOS DATOS AL ING. DE SOPORTE
+    }
+
+    public List<Reporte> listarReportes() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    //SI SE QUIEREN VER LOS REPORTES QUE SE ENVIARON
+    }
 }

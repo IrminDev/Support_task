@@ -1,7 +1,7 @@
 <%-- 
     Document   : feed
-    Created on : 15/04/2022, 09:54:49 PM
-    Author     : Luu
+    Created on : 20/04/2022, 08:48:11 PM
+    Author     : Moni
 --%>
 
 
@@ -11,11 +11,11 @@
 <html>
     <head>
         <title>Inicio</title>
-        <link rel="stylesheet" href="IS/Reportes/style.css">
+        <link rel="stylesheet" href="AS/Reportes/style.css">
         <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--Autor:Luu-->
+        <!--Autor:MoniRior-->
     </head>
    <header>
         <nav class="nav">
@@ -23,12 +23,12 @@
                 <span>S</span>upport<span>W</span>ide
             </div>
             <div class="links">
-                <a href="listaIS?accion=reportes">Ver Reportes </a>
+                <a href="AS?accion=reportes">Ver Reportes </a>
             </div>
         </nav>
     </header>
     <body>
-        <h3 class="titulo">Reportes pendientes</h3>
+        <h3 class="titulo">Reportes</h3>
         <c:forEach  var="report" items="${lista}">
         <div class="container">
             <div class="unidad" >
@@ -42,9 +42,9 @@
                 <h3 class="Text">Ingeniero de Soporte a cargo:</h3>
                 <h3 class="Text"><c:out value="${report.nombreEncargado}" /> <c:out value="${report.apellidoEncargado}" /></h3>
                 <h3 class="Text">Fecha de inicio: <c:out value="${report.inicio}" /></h3>
-                 <h3 class="Text">Descripción</h3>
-                 <textarea  rows="20" id="content" class="fillarea" readonly> <c:out value="${report.descripcion}" /></textarea>
-                 <a href="listaIS?accion=altar&id=<c:out value="${report.idReporte}"/>">Enviar</a>
+                <h3 class="Text">Descripción</h3>
+                <textarea  rows="20" id="content" class="fillarea" readonly> <c:out value="${report.descripcion}" /></textarea>
+                <a href="?accion=altar&id=<c:out value="${report.idReporte}"/>">Enviar</a>
             </div>
             </div>
         </div>
@@ -73,3 +73,4 @@ $(function(){
     </body>
     
 </html>
+
