@@ -17,6 +17,7 @@ descripcion nvarchar(1000),
 fecha_inicio date,
 fecha_fin date
 );
+
 -- TABLAS SIN LLAVES FORÁNEAS
 CREATE TABLE estatus(
 id_estatus int primary key not null auto_increment,
@@ -178,8 +179,28 @@ delimiter ;
 
 select*from reporte;
 
+DROP PROCEDURE IF EXISTS iniciarSesion;
+delimiter &&
+CREATE PROCEDURE iniciarSesion(
+correoUsu nvarchar(60),
+contraUsu nvarchar(20)
+)
+BEGIN
+
+SELECT id_tipo
+FROM relacion_usuario_tipo
+INNER JOIN usuario ON usuario.id_usuario = relacion_usuario_tipo.id_usuario
+WHERE usuario.correo = correoUsu AND usuario.contrasena = contraUsu;
+
+END &&
+delimiter ;
+
+CALL iniciarSesion("luscont@workwide.com", "LUICONWW-123");
+
+
 
 -- PROCESO ALMACENADO QUE HACE CERRAR UN REPORTE
+
 
 DROP PROCEDURE IF EXISTS cerrarReporte;
 delimiter &&
@@ -423,3 +444,4 @@ call listarReportesM(4);
 call altaReporte("Ya acabamos",3);
 call listarReportesP(3);
 SELECT * FROM relacion_reporte_estatus;
+
