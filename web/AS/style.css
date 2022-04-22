@@ -61,7 +61,9 @@ header{
     font-family: 'Poppins', sans-serif;
 }
 .links{
-    margin: 0 1rem 0 0;
+    margin-right: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--fist-color-lighter);
 }
 body{
     display: flex;

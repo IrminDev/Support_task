@@ -23,7 +23,7 @@
                 <span>S</span>upport<span>W</span>ide
             </div>
             <div class="links">
-                <a href="">Ver reportes </a>
+                <a href="index.jsp">Inicio</a>
             </div>
         </nav>
     </header>

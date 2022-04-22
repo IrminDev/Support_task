@@ -15,14 +15,6 @@
         <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <style>
-        body{
-             background-image: url(reportes.png);
-             background-size: cover;
-             
-        }
-        </style>
         <!--Autor:Moni-->
     </head>
     <header>
@@ -30,12 +22,18 @@
             <div class="nav_logo">
                 <span>S</span>upport<span>W</span>ide
             </div>
-            <!-- link que se encuentra en el header que te lleva a los reposrtes acumulados -->
-            <div class="link">
-                    <a href="AS/report.jsp" class="nav_link">Ver reportes</a>
+            <div class="nav_inicio">
+                <a href="index.jsp">Inicio</a>
             </div>
         </nav>
     </header>
     <body>
+        <main>
+            <div class="container">
+                    <a href=""><button>Asedor de Soporte</button></a>
+                    <a href=""><button>Ing. Soporte</button></a>
+                    <a href=""><button>Ing. Mantenimiento</button></a>
+            </div>
+        </main>
     </body>
 </html>

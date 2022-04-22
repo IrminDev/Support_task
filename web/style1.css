@@ -69,6 +69,11 @@ header{
     font-family: 'Poppins', sans-serif;
     color: var(--first-color-lighter);
 }
+.nav_inicio{
+    margin-right: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--fist-color-lighter);
+}
 
 .link{
     margin: 0 1rem 0 0;
@@ -144,6 +149,55 @@ form{
     display: block;
     color: crimson;
   }
+  .p{
+      margin-top: 4000px;
+  }
+  .container{
+	 margin-top: 190px;
+	 width: 700px;
+         height: 100px;
+	 color: white;
+	 border: 1px solid rgba(255, 255, 2555, 0.4);
+	 border-right: 1px solid rgba(255, 255, 2555, 0.2);
+	 border-bottom: 1px solid rgba(255, 255, 2555, 0.2);
+	 border-radius: 10px;
+	 background: white;
+	 z-index: 1;
+	 box-shadow: 0;
+	 text-decoration: none;
+	 position: relative;
+	 padding-left: 5%;
+	}
+
+	.container p
+	{
+	 margin: 17px;
+	 padding:5px;
+
+
+	}
+
+	.container button{
+            text-align: center !important;
+	    width: 200px;
+	    font-size: 20px;
+	    border-radius: 6px;
+	    border: 3px solid #F9F8EC;
+	    background-color: #F9F8EC;
+	    color: #014F76;
+	    padding: 5px 10px;
+	    margin: 2.5px 5px;
+	    cursor: pointer;
+	    transition-duration: 0.2s;
+	}
+
+	.container button:hover{
+            background-color: #439C95;
+            color: white;
+            border: 3px solid #439C95;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.80),0 17px 50px 0 rgba(0,0,0,0.50);
+        }
+
 *{
     box-sizing: border-box;
     padding: 0;
