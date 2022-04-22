@@ -16,9 +16,7 @@ id_reporte int primary key not null auto_increment,
 descripcion nvarchar(1000),
 fecha_inicio date,
 fecha_fin date
-);_inicio date,
-fecha_f
-
+);
 -- TABLAS SIN LLAVES FORÁNEAS
 CREATE TABLE estatus(
 id_estatus int primary key not null auto_increment,

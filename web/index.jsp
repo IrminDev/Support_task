@@ -34,13 +34,13 @@
                 <p class="subtitle unactive" id="p">Selecciona lo que quieres hacer</p>
             </div>
              <div class="box">
-                 <a href="AS?accion=altar" class="unactive " id="b1"><button class="b1" id="tb1">Asesor de Soporte</button></a>
+                 <a href="indexs.jsp" class="unactive " id="b1"><button class="b1" id="tb1">Asesor de Soporte</button></a>
             </div>
             <div class="box">
-                <a href="listaIS?accion=pendientes"class="unactive" id="b2"><button id="tb2">Ing. Soporte</button></a>
+                <a href="indexs.jsp"class="unactive" id="b2"><button id="tb2">Ing. Soporte</button></a>
             </div>
             <div class="box">
-                <a href="IM?accion=pendientes" class="unactive" id="b3" ><button class="pulse" id="tb3">Ing. Mantenimiento</button></a>
+                <a href="indexs.jsp" class="unactive" id="b3" ><button class="pulse" id="tb3">Ing. Mantenimiento</button></a>
             </div>
                 <script >
 var sonido = new Audio();

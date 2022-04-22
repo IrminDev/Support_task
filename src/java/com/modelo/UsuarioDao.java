@@ -16,10 +16,10 @@ import java.util.List;
 public class UsuarioDao {
     
     Connection conexion;
-   public UsuarioDao(){
-       Conexion con = new Conexion();
-       conexion = con.getCon();
-   }
+         public UsuarioDao(){
+             Conexion con = new Conexion();
+             conexion = con.getCon();
+         }
        public  List<Usuario> listarUsuario(){
            PreparedStatement ps;
            ResultSet rs;

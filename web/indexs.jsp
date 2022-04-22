@@ -26,23 +26,15 @@
         <h3 class="titulo">Iniciar sesion</h3>
         <div class="container">
 
-            <form action="action" method="Post">
+            <form id="formInit" method="POST">
                 <div>
                     <h3 class="Text">Correo electronico</h3>
-                    <input class="fill" type="text" id="correo1" name="correo1" placeholder="Correo electronico">
-                </div>
-                <div class="warning" id="cwcorreo1">
-                    <i class="fas fa-exclamation"></i>
-                    <p id="warning-correol"></p>
+                    <input class="fill" type="text" id="correo1" name="correo" placeholder="Correo electronico">
                 </div>
                 <div class="input-field" id="ccontral">
                     <h3 class="Text">Contraseña</h3>
-                    <input class="fill" type="password" id="contral" name="contral" placeholder="Contraseña">
-                </div>
-                <div class="warning" id="cwcontral">
-                    <i class="fas fa-exclamation"></i>
-                    <p id="warning-contral"></p>
-                </div>
+                    <input class="fill" type="password" id="contral" name="contra" placeholder="Contraseña">
+            </div>
                 <input class="button" name="accion" id="BtnIniciar" type="submit" value="Iniciar Sesión">
 
                 <div class="registro-link">
@@ -51,7 +43,7 @@
 
             </form>
         </div>
-        <script src="script.js"></script>
+        <script src="iniciarSesion.js"></script>
     </body>
 </html>
 
