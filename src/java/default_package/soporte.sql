@@ -419,8 +419,9 @@ END &&
 delimiter ;
 
 SELECT * FROM reporte;
-
-call altaReporteMantenimiento(6,"tabien1",4);
+call relacion_reporte_estatus;
+call altaReporteMantenimiento(1,"tabien1",4);
 call listarReportesM(4);
 call altaReporte("Ya acabamos",3);
 call listarReportesP(3);
+SELECT * FROM relacion_reporte_estatus;

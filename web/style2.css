@@ -1,0 +1,269 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 21/04/2022, 10:25:58 PM
+    Author     : Luu
+*/
+:root{
+    --header-height: 4rem;
+
+    --hue: 207;
+    --sat: 89%;
+
+    --first-color: hsl(var(--hue), var(--sat), 68%);
+    --first-color-alt: hsl(var(--hue), var(--sat), 56%);
+    --title-color: hsl(var(--hue), 12%, 15%);
+    --text-color: hsl(var(--hue), 8%, 35%);
+    --body-color: hsl(var(--hue), 100%, 99%);
+    --container-color: #FFF;
+
+    --body-font: 'Poppins', sans-serif;
+
+    --h1-font-size: 1.5rem;
+    --normal-font-size: .94rem;
+    --tiny-font-size: .625rem;
+
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+html{
+    width: 100%;
+    height: 100%
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    transition: 0.5s;
+}
+.span{
+    color: var(--first-color);
+
+}
+/* Estilo de la barra de navegacion */
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,0);
+    z-index: var(--z-fixed);
+    transition: .4s;
+    font-size: 20px;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+}
+.nav{
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav_logo{
+    margin-left: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--first-color-lighter);
+}
+.nav_inicio{
+    margin-right: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--fist-color-lighter);
+}
+
+.link{
+    margin: 0 1rem 0 0;
+}
+body{
+    display: flex;
+    align-items: flex-start;
+
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+      .left{
+            display: flex;
+            width: 55%;
+            height: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content:center;
+           border-right: 1px solid rgba(255, 255, 2555, 0.4);
+               box-shadow: 1px 0px 2px rgba(0,0,0,0.1);
+               margin-left: 0px;
+               background-image: url(login.jpg);
+               background-size: cover;
+               background-position-y: 45%;
+               
+
+}
+
+.right{
+     display: flex;
+            width: 45%;
+            height: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+           border-right: 1px solid rgba(255, 255, 2555, 0.4);
+               box-shadow: 1px 0px 2px rgba(0,0,0,0.1);
+               background-color: #000;
+}
+.text{
+    font-size: 3rem;
+}
+img{
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+
+}
+
+.box{
+            display: flex;
+            width: 70%;
+
+            margin-top: 1rem;
+            margin-left: 3rem;
+            border-radius: 10px;            
+
+
+
+
+        }
+        button:hover{
+           box-shadow: 0 0 20px var(--first-color);
+             color: #fff;
+            background-color: var(--first-color);
+            border: .1px solid #fff;
+
+        }
+        .h1{
+            margin-top: 3rem;
+            color: #fff;
+            margin-left: 3rem;
+            font-size: 2.8rem;
+            font-weight: bolder;
+            color: rgb(231, 233, 234);
+        }
+        .p{
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-left: 3.2rem;
+            color: rgb(231, 233, 234);
+            
+        }
+        .subtitle{
+            color: #fff;
+            
+            color: rgb(231, 233, 234);
+        }
+        button{
+            font-size: 1.3rem;
+            width: 20rem;
+            height: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(231, 233, 234,0.3) ;
+            color: var(--first-color);
+            background: none;
+            
+            
+        }
+                .Suuportwide{
+            background: none;
+           
+            z-index: 10;
+  
+            display: flex;
+            color: #fff;
+
+        }
+        .button-container{
+            margin-bottom: 3rem;
+        }
+        .unactive{
+            display: none;
+        }
+        .active{
+            display: flex;
+        }
+        a{
+            text-decoration: none;
+        }
+        .iniciar{
+           border-radius: 100%;
+           width: 10rem;
+           height: 10rem;
+           margin:0;
+           font-size: 1.5rem;
+           animation: pulse 2.5s infinite;
+        }
+        .iniciar:hover{
+              box-shadow: 0 0 40px var(--first-color);
+             color: #fff;
+            background-color: var(--first-color);
+            border: .1px solid #fff;
+             animation: none;
+        }
+
+        .idk{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .play{
+            width: 4rem;
+            height: 4rem;
+            margin-left:90%;
+            border-color: #000;
+            color: #000;
+            border-radius: 100%;
+            font-size: 2rem;
+        }
+
+        .aninmate{
+              white-space: nowrap;
+    border-right: 3px solid rgb(239, 255, 20);
+    width: 412px;
+    overflow: hidden;
+
+
+    animation: texto 3s 3 steps(30), cursor .5s infinite;
+        }
+        
+@keyframes texto {0% {width: 0}}
+@keyframes cursor {50% {border-color: transparent}}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(101, 181, 246, 0.4);
+  }
+  70% {
+      -webkit-box-shadow: 0 0 0 70px rgba(101, 181, 246, 0);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 0 rgba(101, 181, 246, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(101, 181, 246, 0.4);
+    box-shadow: 0 0 0 0 rgba(101, 181, 246, 0.4);
+  }
+  70% {
+      -moz-box-shadow: 0 0 0 70px rgba(101, 181, 246, 0);
+      box-shadow: 0 0 0 70px rgba(101, 181, 246, 0);
+  }
+  100% {
+      -moz-box-shadow: 0 0 0 0 rgba(101, 181, 246, 0);
+      box-shadow: 0 0 0 0 rgba(101, 181, 246, 0);
+  }
+}
