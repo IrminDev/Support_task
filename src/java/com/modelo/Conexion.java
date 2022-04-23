@@ -25,7 +25,7 @@ public class Conexion {
            //Colocamos la información necesaria para hacer la conexión
            String url = "jdbc:mysql://localhost:3306/soporte?allowPublicKeyRetrieval=true&useSSL=false&zeroDateTimeBehavior=convertToNull&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
            String user = "root";
-           String pass = "n0m3l0";
+           String pass = "programacion";
            //Obtenemos la conexión apartir de los datos que colocamos anteriormente
            con = DriverManager.getConnection(url, user, pass);
         }

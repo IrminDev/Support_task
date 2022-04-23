@@ -17,7 +17,7 @@ public class ASDao extends Conexion{
     /*METODO QUE NOS GENERARA UN NUEVO REPORTE DE MANTENIMIENTO*/
     public boolean altaReporte(Reporte repo){
         /*PROCESO ALMACENADO QUE TIENE COMO PARAMETRO LA DESCRICPCION DEL REPORTE DE SOPORTE*/
-        String sql = "CALL altaReporte('"+repo.getDescripcion()+"',2)";
+        String sql = "CALL altaReporte('"+repo.getDescripcion()+"',3)";
         PreparedStatement ps;
         
            try{
