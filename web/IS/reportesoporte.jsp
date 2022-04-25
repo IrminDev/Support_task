@@ -40,7 +40,7 @@
          Reporte r = (Reporte)dao.list(id);
          
      %>
-        <form action="listaIS">
+        <form action="listaIS" id="formulario">
              <div>
                  <!-- FORMULARIO CON LOS DATOS DEL REPORTE SELECIONADO PARA ENVIAR O CERRAR REPORTE -->
            <input type="hidden" min="" id="fechaActual" value="<%= r.getIdReporte()%>" name="idr">
@@ -73,7 +73,7 @@
             </div>
             <div>
                  <h3 class="Text">Descripción</h3>
-                 <textarea placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"  name="des"><%= r.getDescripcion()%></textarea>
+                 <textarea form="formulario" placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"  name="des"><%= r.getDescripcion()%></textarea>
                                   <p class="warning" id="warning-des"></p>
 
             </div>
