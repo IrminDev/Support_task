@@ -25,18 +25,35 @@ public class listarFAQ extends HttpServlet {
                   List<FAQ> lista = new OpcFAQ().listarFAQs();
                   String output = "";
                   int size = lista.size();
+                  int editor = Integer.parseInt(request.getSession().getAttribute("editor").toString());
                   
                   for(int i=0; i<size; i++){
-                           output += "<div class=\"unidad\" >\n" +
-"                <div class=\"division uno\">\n" +
-"                    <div>\n" +
-"                        <h2>" + lista.get(i).getPregunta() + "</h2>\n" +
-"                    </div>\n" +
-"                </div>\n" +
-"                <div class=\"division dos\">\n" +
-"                    <h3 class=\"Text\">" + lista.get(i).getRespuesta() + "</h3>\n" +
-"                </div>\n" +
-"            </div>";
+                           if(editor == 1){
+                                    output += "<div class=\"unidad\" >\n" +
+                  "                <div class=\"division uno\">\n" +
+                  "                    <div>\n" +
+                  "                        <h2>" + lista.get(i).getPregunta() + "</h2>\n" +
+                  "                    </div>\n" +
+                  "                </div>\n" +
+                  "                <div class=\"division dos\">\n" +
+                  "                    <p class=\"Text\">" + lista.get(i).getRespuesta() + "</p>\n" +
+                  "                    <a href=\"../delFAQ?id=" + lista.get(i).getIdFaq() + "\">Eliminar FAQ</a>\n" +
+                  "                    <a href=\"editFAQ.jsp?id=" + lista.get(i).getIdFaq() + "\">Modificar FAQ</a>" + 
+                  "                </div>\n" +
+                  "            </div>";
+                           }
+                           else{
+                                    output += "<div class=\"unidad\" >\n" +
+                  "                <div class=\"division uno\">\n" +
+                  "                    <div>\n" +
+                  "                        <h2>" + lista.get(i).getPregunta() + "</h2>\n" +
+                  "                    </div>\n" +
+                  "                </div>\n" +
+                  "                <div class=\"division dos\">\n" +
+                  "                    <h3 class=\"Text\">" + lista.get(i).getRespuesta() + "</h3>\n" +
+                  "                </div>\n" +
+                  "            </div>";
+                           }
                   }
                   
                   

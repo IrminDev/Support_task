@@ -20,7 +20,7 @@
              <%
                       if(Integer.parseInt(request.getSession().getAttribute("editor").toString()) == 1){
                                out.print("<div class=\"links\">\n" +
-"                 <a href=\"AgregarFAQ.jsp\">Agregar FAQ </a>\n" +
+"                 <a href=\"addFAQ.jsp\">Agregar FAQ </a>\n" +
 "             </div>");
                       }
              %>
@@ -29,13 +29,11 @@
 
          </nav>
      </header>
-            
-        <h3 class="titulo">Preguntas frecuentes</h3>
-      
-        <div class="container">
-            
-        </div>
-        <script src="JS/FAQs.js"></script>
+            <h3 class="titulo">Preguntas frecuentes</h3>
+            <div class="container">   
+                
+            </div>
+        <script src="../JS/FAQs.js"></script>
 
     </body>
     
