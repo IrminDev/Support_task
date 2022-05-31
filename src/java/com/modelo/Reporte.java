@@ -9,6 +9,7 @@ import java.sql.Date;
 public class Reporte {
     private int idReporte;
     private String descripcion;
+    private String titulo;
     private int idTipoReporte;
     private String tipoReporte;
     private Date inicio;
@@ -27,6 +28,14 @@ public class Reporte {
     public void setIdReporte2(int idReporte2) {
         this.idReporte2 = idReporte2;
     }
+    
+    public String getTitulo() {
+                  return titulo;
+         }
+
+         public void setTitulo(String titulo) {
+                  this.titulo = titulo;
+         }
 
    
 public String getApellidoEncargado() {

@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,11 +40,14 @@ public class iniciar extends HttpServlet {
                   String contra = request.getParameter("contra");
                   
                   //Comprobamos el tipo de usuario
-                  int tipo = AUX.iniciar(correo, contra);
+                  int tipo[] = AUX.iniciar(correo, contra);
+                  HttpSession objSesion = request.getSession();
+                  objSesion.setAttribute("editor", tipo[2]);
+                  objSesion.setAttribute("id", tipo[1]);
                   
                   //En la respuesta conetstamos con el tipo de usuario
                   System.out.println(tipo);
-                  response.getWriter().write(String.valueOf(tipo));
+                  response.getWriter().write(String.valueOf(tipo[0]));
          }
 
          @Override

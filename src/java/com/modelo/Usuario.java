@@ -10,6 +10,15 @@ public class Usuario {
     private String apellido;
     private String correo;
     private String contrasena;
+    private boolean editor;
+
+         public boolean isEditor() {
+                  return editor;
+         }
+
+         public void setEditor(boolean editor) {
+                  this.editor = editor;
+         }
 
     public int getIdUsuario() {
         return idUsuario;

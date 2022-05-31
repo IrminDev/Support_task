@@ -13,9 +13,16 @@ contrasena nvarchar(20)
 
 CREATE TABLE reporte(
 id_reporte int primary key not null auto_increment,
-descripcion nvarchar(1000),
+evento nvarchar(100),
+solucion nvarchar(1000),
 fecha_inicio date,
 fecha_fin date
+);
+
+CREATE TABLE faq(
+id_faq int primary key not null auto_increment,
+pregunta nvarchar(100),
+respuesta nvarchar(1000)
 );
 
 -- TABLAS SIN LLAVES FORÁNEAS
@@ -50,6 +57,12 @@ foreign key (id_usuario) references usuario(id_usuario),
 foreign key (id_tipo) references tipo_usuario(id_tipo)
 );
 
+CREATE TABLE relacion_usuario_editor(
+id_usuario int,
+editor boolean,
+foreign key (id_usuario) references usuario(id_usuario)
+);
+
 CREAtE TABLE relacion_reporte_tipo(
 id_reporte int,
 id_tipo int,
@@ -78,6 +91,9 @@ INSERT INTO estatus VALUES
 (default, "En mantenimiento"),
 (default, "Cerrado");
 
+INSERT INTO faq VALUES
+(default, "Prueba de FAQ", "Esta es una prueba de FAQ");
+
 INSERT INTO tipo_usuario VALUES 
 (default, "Asesor de soporte"),
 (default, "Ingeniero de soporte"),
@@ -96,7 +112,8 @@ nombreN nvarchar(20),
 apellidoN nvarchar(20),
 correoN nvarchar(60),
 contraN nvarchar(20),
-tipoN int
+tipoN int,
+editorN boolean
 )
 BEGIN
 
@@ -108,26 +125,27 @@ SET @id_user = last_insert_id();
 INSERT INTO relacion_usuario_tipo VALUES
 (@id_user, tipoN);
 
+INSERT INTO relacion_usuario_editor VALUES
+(@id_user, editorN);
+
 END &&
 delimiter ;
 
-CALL altaUsuario("Irmin", "Hernández", "irminhdz@workwide.com", "IRHERWW-013", 1);
-CALL altaUsuario("Montserrat", "Rivas", "monirivas@workwide.com", "MONRIWW-895", 1);
-CALL altaUsuario("Daniela", "Sosa", "danisos@workwide.com", "DANSOSWW-120", 2);
-CALL altaUsuario("Luis", "Contreras", "luscont@workwide.com", "LUICONWW-123", 3);
-
-
+CALL altaUsuario("Irmin", "Hernández", "irminhdz@workwide.com", "IRHERWW-013", 1, true);
+CALL altaUsuario("Montserrat", "Rivas", "monirivas@workwide.com", "MONRIWW-895", 1, false);
+CALL altaUsuario("Daniela", "Sosa", "danielasos@workwide.com", "DANSOS-895", 2, false);
+CALL altaUsuario("Luis", "Contreras", "luscont@workwide.com", "LUICONWW-123", 3, true);
 
 DROP PROCEDURE IF EXISTS altaReporte;
 delimiter &&
 CREATE PROCEDURE altaReporte(
-descripcionN nvarchar(1000),
+tituloN nvarchar(100),
 encargadoN int
 )
 BEGIN
 
 INSERT INTO reporte VALUES
-(default, descripcionN, CURDATE(), null);
+(default, tituloN, null, CURDATE(), null);
 SET @id_reporte = last_insert_id();
 
 INSERT INTO relacion_reporte_encargado VALUES
@@ -141,7 +159,7 @@ INSERT INTO relacion_reporte_estatus VALUES
 
 END &&
 delimiter ;
-call altaReporte("si sirve xd",3);
+call altaReporte("Va",3);
 
 -- PROCESO ALMACENADO DE DAR ALTA UN REPORTE DE MANTENIMIENTO
 
@@ -149,13 +167,13 @@ DROP PROCEDURE IF EXISTS altaReporteMantenimiento;
 delimiter &&
 CREATE PROCEDURE altaReporteMantenimiento(
 id_reporteSop int,
-descripcionN nvarchar(1000),
+tituloN nvarchar(100),
 encargadoN int
 )
 BEGIN
 
 INSERT INTO reporte VALUES
-(default, descripcionN, CURDATE(), null);
+(default, tituloN, null, CURDATE(), null);
 SET @id_reporte = last_insert_id();
 
 INSERT INTO relacion_reporte_encargado VALUES
@@ -187,7 +205,8 @@ contraUsu nvarchar(20)
 )
 BEGIN
 
-SELECT id_tipo
+SELECT relacion_usuario_tipo.id_tipo,
+usuario.id_usuario
 FROM relacion_usuario_tipo
 INNER JOIN usuario ON usuario.id_usuario = relacion_usuario_tipo.id_usuario
 WHERE usuario.correo = correoUsu AND usuario.contrasena = contraUsu;
@@ -394,7 +413,8 @@ SELECT
 reporte.id_reporte,
 reporte.fecha_inicio,
 reporte.fecha_fin,
-reporte.descripcion,
+reporte.evento,
+reporte.solucion,
 usuario.nombre,
 usuario.apellido,
 usuario.id_usuario,
@@ -438,10 +458,9 @@ END &&
 delimiter ;
 
 SELECT * FROM reporte;
-call relacion_reporte_estatus;
+select * FROM faq;
 call altaReporteMantenimiento(1,"tabien1",4);
 call listarReportesM(4);
 call altaReporte("Ya acabamos",3);
 call listarReportesP(3);
 SELECT * FROM relacion_reporte_estatus;
-

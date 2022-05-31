@@ -25,6 +25,7 @@
             </div>
             <div class="links">
                 <a href="index.jsp">Inicio</a>
+                <a href="FAQs.jsp">FAQs</a>
             </div>
         </nav>
     </header>
