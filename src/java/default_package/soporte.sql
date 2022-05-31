@@ -464,3 +464,67 @@ call listarReportesM(4);
 call altaReporte("Ya acabamos",3);
 call listarReportesP(3);
 SELECT * FROM relacion_reporte_estatus;
+
+
+DROP PROCEDURE IF EXISTS eliminarFAQ;
+delimiter &&
+CREATE PROCEDURE eliminarFAQ(
+idFAQ int
+)
+BEGIN
+
+DELETE FROM faq
+WHERE id_faq = idFAQ;
+
+END &&
+delimiter ;
+
+
+DROP PROCEDURE IF EXISTS agregarFAQ;
+delimiter &&
+CREATE PROCEDURE agregarFAQ(
+preguntaFAQ nvarchar(100),
+respuestaFAQ nvarchar(1000)
+)
+BEGIN
+
+INSERT INTO faq VALUES
+(default, preguntaFAQ, respuestaFAQ);
+
+END &&
+delimiter ;
+
+
+
+DROP PROCEDURE IF EXISTS consultarFAQ;
+delimiter &&
+CREATE PROCEDURE consultarFAQ(
+idFAQ int
+)
+BEGIN
+
+SELECT * FROM
+faq WHERE
+id_faq = idFAQ;
+
+END &&
+delimiter ;
+CALL consultarFAQ(1);
+
+
+DROP PROCEDURE IF EXISTS cambiarFAQ;
+delimiter &&
+CREATE PROCEDURE cambiarFAQ(
+idFAQ int,
+preguntaFAQ nvarchar(100),
+respuestaFAQ nvarchar(1000)
+)
+BEGIN
+
+UPDATE faq
+SET pregunta = preguntaFAQ,
+respuesta = respuestaFAQ
+WHERE id_faq = idFAQ;
+
+END &&
+delimiter ;
