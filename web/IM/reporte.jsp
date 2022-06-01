@@ -72,8 +72,8 @@
                 </select>
             </div>
             <div>
-                 <h3 class="Text">Descripción</h3>
-                 <textarea placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"  name="des"><%= r.getDescripcion()%></textarea>
+                 <h3 class="Text">Solución</h3>
+                 <textarea placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"  name="des"></textarea>
                  <p class="warning" id="warning-des"></p>
             </div>
             <div class="button-area">

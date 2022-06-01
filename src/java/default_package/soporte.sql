@@ -437,7 +437,7 @@ DROP PROCEDURE IF EXISTS cerrarReporteM4;
 delimiter &&
 CREATE PROCEDURE cerrarReporteM4(
 idReporte int,
-descripcionN nvarchar(1000),
+solucioN nvarchar(1000),
 idReporteZ int
 )
 BEGIN

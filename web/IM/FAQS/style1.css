@@ -3,9 +3,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
 */
 /* 
-    Created on : 15/04/2022, 10:01:39 PM
+    Created on : 14/04/2022, 09:17:51 PM
     Author     : Luu
 */
+
 :root{
     --header-height: 4rem;
 
@@ -18,7 +19,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     --text-color: hsl(var(--hue), 8%, 35%);
     --body-color: hsl(var(--hue), 100%, 99%);
     --container-color: #FFF;
-
+    
     --body-font: 'Poppins', sans-serif;
 
     --h1-font-size: 1.5rem;
@@ -32,7 +33,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    transition:1s;
 }
 span{
     color: var(--first-color);
@@ -60,7 +60,9 @@ header{
     font-family: 'Poppins', sans-serif;
 }
 .links{
-    margin: 0 1rem 0 0;
+    margin-right: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--fist-color-lighter);
 }
 body{
     display: flex;
@@ -76,8 +78,6 @@ body{
 .container{
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    align-items:center ;
     width: 50%;
     height: 75%;
     margin-top: 0rem;
@@ -85,9 +85,6 @@ body{
     background: var(--container-color);
     border-radius: 10px;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
-}
-.fillarea{
-    margin-top: 1rem;
 }
 .text{
     display: block;
@@ -125,6 +122,20 @@ a:visited{
     width: 25%;
     font-size: 0.95rem;
 }
+.button-area{
+    display:flex;
+     justify-content: space-between;
+}
+.button2{
+    background: #D12C2C;
+    color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    margin: 1rem 0 1rem 0;
+    width: 25%;
+    font-size: 0.95rem;
+}
 form{
     width: 75%
 }
@@ -136,12 +147,24 @@ textarea{
     border-radius: 10px;
     padding: 5px;
     outline-color: var(--first-color);
+}
+.textareaw{
+    resize: none;
+    width: 100%;
+    height: 8rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 5px;
+    outline-color: crimson;
 
 }
 
 /* ESTILO DE ADVERTENCIAS */
 .warning {
-    display: none;
+    display: none;              
+}
+.incorrectinput{
+  border: 1px solid red;  
 }
 /* Estilo de text area redimensionable*/
 .noscroll{
@@ -157,7 +180,6 @@ textarea{
   font-size: 13px;
   padding: 5px;
   word-wrap: break-word;
-  margin-top: 1rem;
 }
 .lbr {
   line-height: 3px;
@@ -167,73 +189,24 @@ textarea{
     display: block;
     color: crimson;
 }
-.unidad{
-    display: flex;
-    justify-content: center;
-    width: 60%;
-    height: 75%;
-    flex-direction: row;
-    margin-top: 0rem;
-    background: var(--container-color);
-    border-radius: 10px;
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
-}
-.division{
-    padding: 1rem;
-    
-}
-.uno{
-    width: 25%;
-    color: #fff;
-    background-color: var(--first-color);
-    border-radius: 10px 0 0 10px;
-}
-.dos{
-    width: 75%;
+.activew{
+     display: block;
+    color: crimson;
+    outline-color: crimson;
 }
 @media screen and (min-width: 320px){
     .button{
         width: 100%;
     }
-      .unidad{
-        width: 100%;
-        flex-direction: column;
-    } 
 }
 @media screen and (min-width: 750px){
     .button{
         width: 40%;
-      
     }
-         .unidad{
-        width: 70%;
-        flex-direction: column;
-    } 
-    .uno{
-    width: 100%;
-    color: #fff;
-    background-color: var(--first-color);
-    border-radius: 10px 10px 0px 0px;
-}
-.dos{
-    width: 100%;
-}
 }
 @media screen and (min-width: 1200px){
     .button{
         width: 25%;
     }
-     .unidad{
-        width: 70%;
-        flex-direction: row;
-    } 
-    .uno{
-    width: 25%;
-    color: #fff;
-    background-color: var(--first-color);
-    border-radius: 10px 0 0 10px;
 }
-.dos{
-    width: 75%;
-}
-}
+
