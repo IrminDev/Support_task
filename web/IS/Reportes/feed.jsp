@@ -11,7 +11,7 @@
 <html>
     <head>
         <title>Inicio</title>
-        <link rel="stylesheet" href="IS/Reportes/style.css">
+        <link rel="stylesheet" href="style.css">
         <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,26 +33,10 @@
     </header>
     <body>
         <h3 class="titulo">Reportes pendientes</h3>
-        <c:forEach  var="report" items="${lista}">
         <div class="container">
-            <div class="unidad" >
-                <div class="division uno">
-                <div>
-                    <h2>Estatus</h2>
-                    <h3><c:out value="${report.estatus}" /></h3>
-                </div>
-            </div>
-            <div class="division dos">
-                <h3 class="Text">Ingeniero de Soporte a cargo:</h3>
-                <h3 class="Text"><c:out value="${report.nombreEncargado}" /> <c:out value="${report.apellidoEncargado}" /></h3>
-                <h3 class="Text">Fecha de inicio: <c:out value="${report.inicio}" /></h3>
-                <h3 class="Text">Título: <c:out value="${report.titulo}" /></h3>
-                 <a href="listaIS?accion=altar&id=<c:out value="${report.idReporte}"/>">Enviar y/osolucionar</a>
-            </div>
-            </div>
+            
         </div>
-             </c:forEach>
-        </div>
+        <script src="ENVIARrE.jsp"></script>
         <script src="script.js"></script>
            <script>
 $(function(){
