@@ -63,7 +63,7 @@
                 </select>
             </div>
             <div>
-                 <h3 class="Text">Descripción</h3>
+                 <h3 class="Text">Evento</h3>
                  <textarea form="altaZo" name="des" placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"></textarea>
             </div>
             <input class="button" name="accion" id="BtnIniciar" type="submit" value="Enviar">

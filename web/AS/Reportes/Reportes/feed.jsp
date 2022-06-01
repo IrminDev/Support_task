@@ -43,7 +43,7 @@
                 <h3 class="Text"><c:out value="${report.nombreEncargado}" /> <c:out value="${report.apellidoEncargado}" /></h3>
                 <h3 class="Text">Fecha de inicio: <c:out value="${report.inicio}" /></h3>
                 <h3 class="Text">Fecha de fin: <c:out value="${report.inicio}" /></h3>
-                <h3 class="Text">Descripción</h3>
+                <h3 class="Text">Evento</h3>
                 <textarea  rows="20" id="content" class="fillarea" readonly> <c:out value="${report.descripcion}" /></textarea>
                 <a href="?accion=altar&id=<c:out value="${report.idReporte}"/>">Enviar</a>
             </div>

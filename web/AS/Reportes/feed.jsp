@@ -41,7 +41,7 @@
                 <h3 class="Text">Ingeniero de Soporte a cargo:</h3>
                 <h3 class="Text"><c:out value="${report.nombreEncargado}" /> <c:out value="${report.apellidoEncargado}" /></h3>
                 <h3 class="Text">Fecha de inicio: <c:out value="${report.inicio}" /></h3>
-                <h3 class="Text">Descripción</h3>
+                <h3 class="Text">Evento</h3>
                 <textarea  rows="20" id="content" class="fillarea" readonly> <c:out value="${report.descripcion}" /></textarea>
                 <a href="AS?accion=altar&id=<c:out value="${report.idReporte}"/>">Enviar</a>
                 <!-- duda aquí xd -->
