@@ -28,8 +28,8 @@
         </nav>
     </header>
     <body>
-        <h3 class="titulo">Reportes pendientes</h3>
-        <c:forEach  var="report" items="${lista}">
+        <h3 class="titulo">Reportes enviados</h3>
+        <c:forEach  var="report" items="${list}">
         <div class="container">
             <div class="unidad" >
                 <div class="division uno">
@@ -43,8 +43,7 @@
                 <h3 class="Text"><c:out value="${report.nombreEncargado}" /> <c:out value="${report.apellidoEncargado}" /></h3>
                 <h3 class="Text">Fecha de inicio: <c:out value="${report.inicio}" /></h3>
                 <h3 class="Text">Fecha de fin: <c:out value="${report.inicio}" /></h3>
-                 <h3 class="Text">Descripción</h3>
-                 <textarea  rows="20" id="content" class="fillarea" readonly> <c:out value="${report.descripcion}" /></textarea>
+                 <h3 class="Text">Título: <c:out value="${report.titulo}" /></h3>
             </div>
             </div>
         </div>

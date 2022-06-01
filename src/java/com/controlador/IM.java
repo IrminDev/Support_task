@@ -64,7 +64,7 @@ public class IM extends HttpServlet {
                 String des = request.getParameter("des");
                 id2= Integer.parseInt(request.getParameter("idr2"));
                 repo.setIdReporte(id);
-                repo.setDescripcion(des);
+                repo.setTitulo(des);
                 repo.setIdReporte2(id2);
                 /*AENVIAMOS LOS DATOS AL METODO CERRARREPORTE PARA GENERAR UN CABIO DE ESTADO Y DESCRIPCION*/
                 rdao.cerrarReporte(repo);

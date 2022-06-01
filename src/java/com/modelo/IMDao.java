@@ -34,7 +34,7 @@ public class IMDao extends Conexion{
                 report.setIdReporte(rs.getInt(1));
                 report.setInicio(rs.getDate(2));
                 report.setFin(rs.getDate(3));
-                report.setDescripcion(rs.getString(4));
+                report.setTitulo(rs.getString(4));
                 report.setNombreEncargado(rs.getString(5));
                 report.setApellidoEncargado(rs.getString(6));
                 report.setEstatus(rs.getString(8));
@@ -68,7 +68,7 @@ public class IMDao extends Conexion{
                 report.setIdReporte(rs.getInt(1));
                 report.setInicio(rs.getDate(2));
                 report.setFin(rs.getDate(3));
-                report.setDescripcion(rs.getString(4));
+                report.setTitulo(rs.getString(4));
                 report.setNombreEncargado(rs.getString(5));
                 report.setApellidoEncargado(rs.getString(6));
                 report.setEstatus(rs.getString(8));
@@ -86,7 +86,7 @@ public class IMDao extends Conexion{
         /*METODO QUE NOS ACTUALIZARA NUESTRO REPORTE A ESTATUS CERRADO Y CON LA NUEVA DESCRIPCION*/
     public boolean cerrarReporte(Reporte repo){
         /*PROCESO ALMACENADO QUE NOS PERMITIRA CERRAR EL REPORTE PERO QUE TIENE COMO PARAMETRO EL ID DEL REPORTE A CAMBIAR*/
-        String sql = "CALL cerrarReporteM4('"+repo.getIdReporte()+"','"+repo.getDescripcion()+"','"+repo.getIdReporte2()+"')";
+        String sql = "CALL cerrarReporteM4('"+repo.getIdReporte()+"','"+repo.getTitulo()+"','"+repo.getIdReporte2()+"')";
         PreparedStatement ps;
         
            try{
@@ -117,7 +117,7 @@ public class IMDao extends Conexion{
                 repor.setIdReporte2(rs.getInt(2));
                 repor.setInicio(rs.getDate(3));
                 repor.setFin(rs.getDate(4));
-                repor.setDescripcion(rs.getString(5));
+                repor.setTitulo(rs.getString(5));
                 repor.setNombreEncargado(rs.getString(6));
                 repor.setApellidoEncargado(rs.getString(7));
                 repor.setEstatus(rs.getString(8));

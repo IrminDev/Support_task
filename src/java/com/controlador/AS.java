@@ -51,7 +51,7 @@ public class AS extends HttpServlet {
             if (accion.equalsIgnoreCase("Enviar")){
                /*TENEMOS DOS PARAMETROS UNO EL ID Y LA DESCRIPCION*/
                String des = request.getParameter("des");
-               repo.setDescripcion(des);
+               repo.setTitulo(des);
                /*ENVIAMOS LOS DATOS AL ING. DE SOPORTE*/
                rdao.altaReporte(repo);  
             }

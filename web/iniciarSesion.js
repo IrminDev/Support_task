@@ -3,7 +3,7 @@ BtnIniciar = document.getElementById("BtnIniciar");
 
 form.onsubmit = (e)=>{
     e.preventDefault();
-}
+};
 
 BtnIniciar.onclick = ()=>{
         let xhr = new XMLHttpRequest();

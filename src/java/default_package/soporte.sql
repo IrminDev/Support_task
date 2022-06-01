@@ -133,7 +133,7 @@ delimiter ;
 
 CALL altaUsuario("Irmin", "Hernández", "irminhdz@workwide.com", "IRHERWW-013", 1, true);
 CALL altaUsuario("Montserrat", "Rivas", "monirivas@workwide.com", "MONRIWW-895", 1, false);
-CALL altaUsuario("Daniela", "Sosa", "danielasos@workwide.com", "DANSOS-895", 2, false);
+CALL altaUsuario("Daniela", "Sosa", "danielasos@workwide.com", "DANSOS-895", 2, true);
 CALL altaUsuario("Luis", "Contreras", "luscont@workwide.com", "LUICONWW-123", 3, true);
 
 DROP PROCEDURE IF EXISTS altaReporte;
@@ -219,18 +219,16 @@ CALL iniciarSesion("luscont@workwide.com", "LUICONWW-123");
 
 
 -- PROCESO ALMACENADO QUE HACE CERRAR UN REPORTE
-
-
 DROP PROCEDURE IF EXISTS cerrarReporte;
 delimiter &&
 CREATE PROCEDURE cerrarReporte(
 idReporte int,
-descripcionN nvarchar(1000)
+solucionN nvarchar(1000)
 )
 BEGIN
 
 UPDATE reporte
-SET descripcion = descripcionN
+SET solucion = solucionN
 WHERE id_reporte = idReporte;
 
 UPDATE relacion_reporte_estatus
@@ -257,11 +255,11 @@ WHERE id_reporte = idReporte;
 END &&
 delimiter ; 
 
--- PROCESO ALACENADO QUE NOS DA LA CONSULTA DEL IS DE LOS REPORTES QUE ESTAN EN ESTATUS "CERRADO O MANTENIMIENTO"
+-- PROCESO ALACENADO QUE NOS DA LA CONSULTA DEL IS DE LOS REPORTES QUE ESTAN EN ESTATUS "MANTENIMIENTO"
 
-DROP PROCEDURE IF EXISTS listarReportes;
+DROP PROCEDURE IF EXISTS listarReportesMM;
 delimiter &&
-CREATE PROCEDURE listarReportes(
+CREATE PROCEDURE listarReportesMM(
 idUsuario int
 )
 
@@ -271,7 +269,8 @@ SELECT
 reporte.id_reporte,
 reporte.fecha_inicio,
 reporte.fecha_fin,
-reporte.descripcion,
+reporte.evento,
+reporte.solucion,
 usuario.nombre,
 usuario.apellido,
 usuario.id_usuario,
@@ -281,11 +280,12 @@ INNER JOIN relacion_reporte_encargado ON relacion_reporte_encargado.id_reporte =
 INNER JOIN usuario ON usuario.id_usuario = relacion_reporte_encargado.id_usuario
 INNER JOIN relacion_reporte_estatus ON relacion_reporte_estatus.id_reporte = reporte.id_reporte
 INNER JOIN estatus ON estatus.id_estatus = relacion_reporte_estatus.id_estatus
-WHERE usuario.id_usuario = idUsuario AND estatus.id_estatus>=3;
+WHERE usuario.id_usuario = idUsuario AND estatus.id_estatus=3;
 
 END
 && delimiter ;
 
+-- PROCESO ALACENADO QUE NOS DA LA CONSULTA DEL IS DE LOS REPORTES QUE ESTAN EN ESTATUS ""
 
 DROP PROCEDURE IF EXISTS listar2Reporte;
 delimiter &&
@@ -298,7 +298,8 @@ reporte.id_reporte,
 relacion_reporte_mantenimiento.id_reporte_soporte,
 reporte.fecha_inicio,
 reporte.fecha_fin,
-reporte.descripcion,
+reporte.evento,
+reporte.solucion,
 usuario.nombre,
 usuario.apellido,
 estatus.estatus
@@ -327,7 +328,8 @@ SELECT
 reporte.id_reporte,
 reporte.fecha_inicio,
 reporte.fecha_fin,
-reporte.descripcion,
+reporte.evento,
+reporte.solucion,
 usuario.nombre,
 usuario.apellido,
 estatus.estatus
@@ -356,7 +358,8 @@ SELECT
 reporte.id_reporte,
 reporte.fecha_inicio,
 reporte.fecha_fin,
-reporte.descripcion,
+reporte.evento,
+reporte.solucion,
 usuario.nombre,
 usuario.apellido,
 estatus.estatus
@@ -384,7 +387,8 @@ SELECT
 reporte.id_reporte,
 reporte.fecha_inicio,
 reporte.fecha_fin,
-reporte.descripcion,
+reporte.evento,
+reporte.solucion,
 usuario.nombre,
 usuario.apellido,
 usuario.id_usuario,
@@ -398,7 +402,7 @@ WHERE usuario.id_usuario = idUsuario AND estatus.id_estatus=4;
 
 END
 && delimiter ;
-
+-- IM
 -- PROCESO ALACENADO QUE NOS DA LA CONSULTA DEL IS DE LOS REPORTES QUE ESTAN EN ESTATUS "Mantenimiento"
 
 DROP PROCEDURE IF EXISTS listarReportesM;
@@ -460,8 +464,8 @@ delimiter ;
 SELECT * FROM reporte;
 select * FROM faq;
 call altaReporteMantenimiento(1,"tabien1",4);
-call listarReportesM(4);
-call altaReporte("Ya acabamos",3);
+call listarReportesC(3);
+call altaReporte("a mimir",3);
 call listarReportesP(3);
 SELECT * FROM relacion_reporte_estatus;
 
@@ -528,3 +532,5 @@ WHERE id_faq = idFAQ;
 
 END &&
 delimiter ;
+
+select *from faq;

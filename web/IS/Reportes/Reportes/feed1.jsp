@@ -3,7 +3,9 @@
     Created on : 15/04/2022, 09:54:49 PM
     Author     : Luu
 --%>
-
+<%@page import="java.util.List"%>
+<%@page import="com.modelo.Reporte"%>
+<%@page import="com.modelo.ReporteDao"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -25,14 +27,10 @@
             <div class="links">
                 <a href="IS/Reportes/Reportes/cerrado.jsp">Ver Reportes </a>
             </div>
-            <div class="links">
-                <a href="FAQS/FAQs.jsp">Ver FAQ's </a>
-            </div>
-            
         </nav>
     </header>
     <body>
-        <h3 class="titulo">Reportes pendientes</h3>
+        <h3 class="titulo">Reportes solucionados</h3>
         <c:forEach  var="report" items="${lista}">
         <div class="container">
             <div class="unidad" >
@@ -46,15 +44,21 @@
                 <h3 class="Text">Ingeniero de Soporte a cargo:</h3>
                 <h3 class="Text"><c:out value="${report.nombreEncargado}" /> <c:out value="${report.apellidoEncargado}" /></h3>
                 <h3 class="Text">Fecha de inicio: <c:out value="${report.inicio}" /></h3>
-                <h3 class="Text">Título: <c:out value="${report.titulo}" /></h3>
-                 <a href="listaIS?accion=altar&id=<c:out value="${report.idReporte}"/>">Enviar y/o solucionar</a>
+                <h3 class="Text">Fecha de fin: <c:out value="${report.inicio}" /></h3>
+                 <h3 class="Text" name="pregunta">Título:  <c:out value="${report.titulo}" /></h3>
+                 <h3 class="Text">Solución:</h3>
+                 <textarea  rows="20" id="content" class="fillarea" readonly name="respuesta"> <c:out value="${report.solucion}" /></textarea>
             </div>
+            </div>
+         
+            
             </div>
         </div>
              </c:forEach>
         </div>
         <script src="script.js"></script>
            <script>
+               
 $(function(){
     var textArea = $('#content'),
     hiddenDiv = $(document.createElement('div')),
@@ -76,3 +80,4 @@ $(function(){
     </body>
     
 </html>
+

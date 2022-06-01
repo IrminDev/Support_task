@@ -8,7 +8,7 @@ import java.sql.Date;
  */
 public class Reporte {
     private int idReporte;
-    private String descripcion;
+    private String solucion;
     private String titulo;
     private int idTipoReporte;
     private String tipoReporte;
@@ -54,12 +54,12 @@ public String getApellidoEncargado() {
         this.idReporte = idReporte;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getSolucion() {
+        return solucion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setSolucion(String solucion) {
+        this.solucion = solucion;
     }
 
     public int getIdTipoReporte() {

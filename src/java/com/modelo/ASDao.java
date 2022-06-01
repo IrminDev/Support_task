@@ -17,7 +17,7 @@ public class ASDao extends Conexion{
     /*METODO QUE NOS GENERARA UN NUEVO REPORTE DE MANTENIMIENTO*/
     public boolean altaReporte(Reporte repo){
         /*PROCESO ALMACENADO QUE TIENE COMO PARAMETRO LA DESCRICPCION DEL REPORTE DE SOPORTE*/
-        String sql = "CALL altaReporte('"+repo.getDescripcion()+"',3)";
+        String sql = "CALL altaReporte('"+repo.getTitulo()+"',3)";
         PreparedStatement ps;
         
            try{
@@ -46,7 +46,7 @@ public class ASDao extends Conexion{
                 repor.setIdReporte2(rs.getInt(2));
                 repor.setInicio(rs.getDate(3));
                 repor.setFin(rs.getDate(4));
-                repor.setDescripcion(rs.getString(5));
+                repor.setTitulo(rs.getString(5));
                 repor.setNombreEncargado(rs.getString(6));
                 repor.setApellidoEncargado(rs.getString(7));
                 repor.setEstatus(rs.getString(8));

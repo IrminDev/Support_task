@@ -73,8 +73,12 @@
                 </select>
             </div>
             <div>
-                 <h3 class="Text">Descripción</h3>
-                 <textarea form="formulario" placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"  name="des"><%= r.getDescripcion()%></textarea>
+                <h3 class="Text">Título:</h3>
+                <input class="fill date1" type="text" min="" id="titulo" value="<%= r.getTitulo()%>"   name="tit" readonly>
+            </div>
+            <div>
+                 <h3 class="Text">Solucion</h3>
+                 <textarea form="formulario" placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"  name="des"></textarea>
                                   <p class="warning" id="warning-des"></p>
 
             </div>
