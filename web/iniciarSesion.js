@@ -17,7 +17,7 @@ BtnIniciar.onclick = ()=>{
                     }
                     else{
                         if(data === "2"){
-                            location.href = "listaIS?accion=pendientes";
+                            location.href = "IS/Reportes/feed.jsp";
                         }
                         else{
                             if(data === "3"){

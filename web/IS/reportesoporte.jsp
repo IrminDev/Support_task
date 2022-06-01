@@ -83,7 +83,6 @@
 
             </div>
             <div class="button-area">
-            <input onclick="return enviarForm()" class="button" name="accion" id="BtnIniciar" type="submit" value="Enviar">
             <input onclick="return enviarForm()" class="button" name="accion" id="BtnIniciar" type="submit" value="Cerrar">
             </div>
         </form>

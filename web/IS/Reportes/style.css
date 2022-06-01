@@ -58,7 +58,6 @@ header{
 .nav_logo{
     margin-left: 1rem;
     font-family: 'Poppins', sans-serif;
-    color: var(--first-color-lighter);
 }
 .links{
     margin: 0 1rem 0 0;
@@ -77,6 +76,8 @@ body{
 .container{
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 50%;
     height: 75%;
     margin-top: 0rem;
@@ -169,7 +170,7 @@ textarea{
 .unidad{
     display: flex;
     justify-content: center;
-    width: 60%;
+    width: 100%;
     height: 75%;
     flex-direction: row;
     margin-top: 0rem;

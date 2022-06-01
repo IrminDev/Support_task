@@ -56,14 +56,16 @@ public class EnviarR extends HttpServlet {
                               "<h3 class=\"Text\">Título: "  +lista.get(i).getTitulo()+ "</h3>\n"+
                               "</div>\n"+
                               "</div>"+
-"<a href=\"EnviarR?id=" +lista.get(i).getIdReporte()+"\"/>\">Enviar</a>"+
- "<a href=\"listaIS?accion=altar&id="+lista.get(i).getIdReporte()+"\"/>\">Solucionar</a>\n" +
+"<a href=\"../../Enviar?id=" +lista.get(i).getIdReporte()+"\"/>\">Enviar</a>"+
+ "<a href=\"../../listaIS?accion=altar&id="+lista.get(i).getIdReporte()+"\"/>\">Solucionar</a>\n" +
 "</div>"  ;
                            }
                 
                                             
                   
                            }
+                   response.getWriter().write(output);
+                  
       
     }
 

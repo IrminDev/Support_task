@@ -59,10 +59,8 @@ public class listaIS extends HttpServlet {
     
     /*Acceso a diferentes pagina modulo de consultas*/
     if(accion.equalsIgnoreCase("pendientes")){
-        List<Reporte> lista = new ArrayList<>();
-        lista= rdao.listarReportesP();
+      
         acceso=listar;
-        request.setAttribute("lista",lista);
         
     }else
         /*SI QUEREMOS VER LOS REPORTES QUE SE CERRARON*/

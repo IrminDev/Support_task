@@ -2,7 +2,7 @@ const faqlist = document.querySelector(".container");
 
 function listar(){
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "../../../Enviar", true);
+    xhr.open("GET", "../../EnviarR", true);
     xhr.onload = () =>{
         if(xhr.readyState === XMLHttpRequest.DONE){
             if(xhr.status === 200){

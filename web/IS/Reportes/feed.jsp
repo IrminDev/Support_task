@@ -28,7 +28,9 @@
             <div class="links">
                 <a href="FAQS/FAQs.jsp">Ver FAQ's </a>
             </div>
-            
+            <div class="links">
+                <a href="../../listaIS?accion=reportesM">Ver Reportes </a>
+            </div>
         </nav>
     </header>
     <body>
@@ -36,26 +38,9 @@
         <div class="container">
             
         </div>
-        <script src="ENVIARrE.jsp"></script>
-        <script src="script.js"></script>
+        <script src="ENVIARrE.js"></script>
            <script>
-$(function(){
-    var textArea = $('#content'),
-    hiddenDiv = $(document.createElement('div')),
-    content = null;
-    
-    textArea.addClass('noscroll');
-    hiddenDiv.addClass('hiddendiv');
-    
-    $(textArea).after(hiddenDiv);
-    
-    textArea.on('keyup', function(){
-        content = $(this).val();
-        content = content.replace(/n/g, '<br>');
-        hiddenDiv.html(content + '<br class="lbr">');
-        $(this).css('height', hiddenDiv.height());
-    });
-});
+
 </script>
     </body>
     
