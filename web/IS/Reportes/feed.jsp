@@ -47,7 +47,7 @@
                 <h3 class="Text"><c:out value="${report.nombreEncargado}" /> <c:out value="${report.apellidoEncargado}" /></h3>
                 <h3 class="Text">Fecha de inicio: <c:out value="${report.inicio}" /></h3>
                 <h3 class="Text">Título: <c:out value="${report.titulo}" /></h3>
-                 <a href="listaIS?accion=altar&id=<c:out value="${report.idReporte}"/>">Enviar y/o solucionar</a>
+                 <a href="listaIS?accion=altar&id=<c:out value="${report.idReporte}"/>">Enviar y/osolucionar</a>
             </div>
             </div>
         </div>

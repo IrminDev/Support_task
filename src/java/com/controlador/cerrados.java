@@ -40,7 +40,8 @@ public class cerrados extends HttpServlet {
                   
                   for(int i=0; i<size; i++){
                            if(editor == 1){
-                    output += "<div class=\"unidad\" >\n" +
+                    output +=""+ 
+                            "<div class=\"unidad\" >\n" +
                               "<div class=\"division uno\">\n" +
                               "<div>\n"+
                               "<h2>Estatus</h2>\n" +
@@ -57,7 +58,7 @@ public class cerrados extends HttpServlet {
                               "<textarea  rows=\"20\" id=\"content\" class=\"fillarea\" readonly >" + lista.get(i).getSolucion() + "</textarea>" +
                               "</div>\n"+
                               "</div>"+
-                            "<a href=\"../../../listaIS?accion=faq&id=" + lista.get(i).getIdReporte() +"\">Agregar FAQ</a>\n";
+                            "<a href=\"../../../addRepoteFaq?id=" + lista.get(i).getIdReporte() +"\">Agregar FAQ</a>\n";
                                             
                   
                            }

@@ -122,13 +122,7 @@ public class listaIS extends HttpServlet {
                
                 
                 
-            }else
-                   if(accion.equalsIgnoreCase("faq")){
-            /*CON ESTO TOMAMOS EL ID TOMANDO EL ATRIBUTO IDREPO*/
-            request.setAttribute("idrepo",request.getParameter("id"));
-            acceso=faqs;
-            
-        }
+            }
       RequestDispatcher vista = request.getRequestDispatcher(acceso);
           vista.forward(request, response);
         
