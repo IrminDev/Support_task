@@ -10,7 +10,7 @@
 <html>
     <head>
         <title>Formulario de FAQ</title>
-        <link rel="stylesheet" href="IS/Reportes/FAQS/style1.css">
+        <link rel="stylesheet" href="IM/Reportes/FAQS/style1.css">
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             
         <meta charset="UTF-8">

@@ -50,7 +50,7 @@
         </div>
              </c:forEach>
         </div>
-        <script src="script.js"></script>
+        <script src="Listar.js"></script>
            <script>
 $(function(){
     var textArea = $('#content'),

@@ -35,9 +35,10 @@ public class IMDao extends Conexion{
                 report.setInicio(rs.getDate(2));
                 report.setFin(rs.getDate(3));
                 report.setTitulo(rs.getString(4));
-                report.setNombreEncargado(rs.getString(5));
-                report.setApellidoEncargado(rs.getString(6));
-                report.setEstatus(rs.getString(8));
+                report.setSolucion(rs.getString(5));
+                report.setNombreEncargado(rs.getString(6));
+                report.setApellidoEncargado(rs.getString(7));
+                report.setEstatus(rs.getString(9));
                 lista.add(report);
                 /*GUARDAMOS LOS DATOS*/
             }
@@ -69,9 +70,10 @@ public class IMDao extends Conexion{
                 report.setInicio(rs.getDate(2));
                 report.setFin(rs.getDate(3));
                 report.setTitulo(rs.getString(4));
-                report.setNombreEncargado(rs.getString(5));
-                report.setApellidoEncargado(rs.getString(6));
-                report.setEstatus(rs.getString(8));
+                report.setSolucion(rs.getString(5));
+                report.setNombreEncargado(rs.getString(6));
+                report.setApellidoEncargado(rs.getString(7));
+                report.setEstatus(rs.getString(9));
                 lista.add(report);
                 /*GUARDAMOS LOS DATOS*/
             }
@@ -86,7 +88,7 @@ public class IMDao extends Conexion{
         /*METODO QUE NOS ACTUALIZARA NUESTRO REPORTE A ESTATUS CERRADO Y CON LA NUEVA DESCRIPCION*/
     public boolean cerrarReporte(Reporte repo){
         /*PROCESO ALMACENADO QUE NOS PERMITIRA CERRAR EL REPORTE PERO QUE TIENE COMO PARAMETRO EL ID DEL REPORTE A CAMBIAR*/
-        String sql = "CALL cerrarReporteM4('"+repo.getIdReporte()+"','"+repo.getTitulo()+"','"+repo.getIdReporte2()+"')";
+        String sql = "CALL cerrarReporteM4('"+repo.getIdReporte()+"','"+repo.getSolucion()+"','"+repo.getIdReporte2()+"')";
         PreparedStatement ps;
         
            try{
@@ -118,9 +120,10 @@ public class IMDao extends Conexion{
                 repor.setInicio(rs.getDate(3));
                 repor.setFin(rs.getDate(4));
                 repor.setTitulo(rs.getString(5));
-                repor.setNombreEncargado(rs.getString(6));
-                repor.setApellidoEncargado(rs.getString(7));
-                repor.setEstatus(rs.getString(8));
+                repor.setSolucion(rs.getString(6));
+                repor.setNombreEncargado(rs.getString(7));
+                repor.setApellidoEncargado(rs.getString(8));
+                repor.setEstatus(rs.getString(9 ));
                    /*SE ALMACENAN EN EL OBJETO REPOR PARA QUE CUANDO QUERAMOS CONSULTARLOS*/
             }
             

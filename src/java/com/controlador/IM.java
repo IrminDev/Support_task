@@ -61,11 +61,13 @@ public class IM extends HttpServlet {
                 if(accion.equalsIgnoreCase("guardar")){
                 /*IGUAL TENEMOS DOS PARAMETROS EL ID Y UNO PARA LA DESCRIPCION*/
                 id= Integer.parseInt(request.getParameter("idr"));
-                String des = request.getParameter("des");
+
+                String sol= request.getParameter("des");
                 id2= Integer.parseInt(request.getParameter("idr2"));
                 repo.setIdReporte(id);
-                repo.setTitulo(des);
+                repo.setSolucion(sol);
                 repo.setIdReporte2(id2);
+                
                 /*AENVIAMOS LOS DATOS AL METODO CERRARREPORTE PARA GENERAR UN CABIO DE ESTADO Y DESCRIPCION*/
                 rdao.cerrarReporte(repo);
                

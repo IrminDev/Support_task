@@ -71,11 +71,18 @@
                     <option value="" >Mantenimiento</option>
                 </select>
             </div>
-            <div>
-                 <h3 class="Text">Solución</h3>
-                 <textarea placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"  name="des"></textarea>
-                 <p class="warning" id="warning-des"></p>
+               <div>
+                <h3 class="Text">Título:</h3>
+                <input class="fill date1" type="text" min="" id="titulo" value="<%= r.getTitulo()%>"   name="tit" readonly>
             </div>
+            <div>
+                 <h3 class="Text">Solucion</h3>
+                 <input class="fill date1" type="text" min="" id="content" value=""   name="des" >
+
+                                  <p class="warning" id="warning-des"></p>
+
+            </div>
+
             <div class="button-area">
             <input onclick="return enviarForm()" class="button" name="accion" id="BtnIniciar" type="submit" value="guardar">
             </div>

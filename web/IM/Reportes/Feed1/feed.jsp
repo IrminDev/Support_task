@@ -22,6 +22,13 @@
             <div class="nav_logo">
                 <span>S</span>upport<span>W</span>ide
             </div>
+                         <%
+                      if(Integer.parseInt(request.getSession().getAttribute("editor").toString()) == 1){
+                               out.print("<div class=\"links\">\n" +
+"                 <a href=\"addFAQ.jsp\">Agregar FAQ </a>\n" +
+"             </div>");
+                      }
+             %>
             <div class="links">
                 <a href="IM?accion=reportes">Ver Reportes </a>
             </div>
@@ -43,14 +50,15 @@
                 <h3 class="Text"><c:out value="${report.nombreEncargado}" /> <c:out value="${report.apellidoEncargado}" /></h3>
                 <h3 class="Text">Fecha de inicio: <c:out value="${report.inicio}" /></h3>
                 <h3 class="Text">Fecha de fin: <c:out value="${report.inicio}" /></h3>
+                <h3 class="Text">Titulo: <c:out value="${report.titulo}" /></h3>
                  <h3 class="Text">Solucion</h3>
-                 <textarea  rows="20" id="content" class="fillarea" readonly> </textarea>
+                 <textarea  rows="20" id="content" class="fillarea" readonly> <c:out value="${report.solucion}" /> </textarea>
             </div>
             </div>
         </div>
              </c:forEach>
         </div>
-        <script src="script.js"></script>
+        <script src="Listar.js"></script>
            <script>
 $(function(){
     var textArea = $('#content'),

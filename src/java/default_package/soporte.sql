@@ -286,7 +286,7 @@ END
 && delimiter ;
 
 -- PROCESO ALACENADO QUE NOS DA LA CONSULTA DEL IS DE LOS REPORTES QUE ESTAN EN ESTATUS ""
-
+Select * from reporte;
 DROP PROCEDURE IF EXISTS listar2Reporte;
 delimiter &&
 CREATE PROCEDURE listar2Reporte(    
@@ -443,7 +443,7 @@ idReporteZ int
 BEGIN
 
 UPDATE reporte
-SET descripcion = descripcionN
+SET solucion = solucioN
 WHERE id_reporte = idReporte;
 
 UPDATE relacion_reporte_estatus
@@ -455,7 +455,7 @@ SET id_estatus = 4
 WHERE id_reporte = idReporteZ;
 
 UPDATE reporte
-SET descripcion = descripcionN
+SET solucion = solucioN
 WHERE id_reporte = idReporteZ;
 
 END &&
@@ -463,6 +463,11 @@ delimiter ;
 
 SELECT * FROM reporte;
 select * FROM faq;
+
+
+
+call cerrarReporteM4(2,"solucionado",1);
+call listarReportesM(4);
 call altaReporteMantenimiento(1,"tabien1",4);
 call listarReportesC(3);
 call altaReporte("a mimir",3);
