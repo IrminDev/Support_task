@@ -25,7 +25,7 @@
                          <%
                       if(Integer.parseInt(request.getSession().getAttribute("editor").toString()) == 1){
                                out.print("<div class=\"links\">\n" +
-"                 <a href=\"addFAQ.jsp\">Agregar FAQ </a>\n" +
+"                 <a href=\"../../FAQS/addFAQ.jsp\">Agregar FAQ </a>\n" +
 "             </div>");
                       }
              %>

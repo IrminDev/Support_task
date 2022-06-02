@@ -42,6 +42,7 @@
                 <h3 class="Text">Ingeniero de Soporte a cargo:</h3>
                 <h3 class="Text"><c:out value="${report.nombreEncargado}" /> <c:out value="${report.apellidoEncargado}" /></h3>
                 <h3 class="Text">Fecha de inicio: <c:out value="${report.inicio}" /></h3>
+                <h3 class="Text">Titulo: <c:out value="${report.titulo}" /></h3>
                  <h3 class="Text">Solucion</h3>
                  <textarea  rows="20" id="content" class="fillarea" readonly> </textarea>
                  <a href="IM?accion=cerrar&id=<c:out value="${report.idReporte}"/>">Cerrar</a>

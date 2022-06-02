@@ -3,6 +3,7 @@
     Created on : 31/05/2022, 05:47:13 PM
     Author     : IRMIN
 --%>
+<%@page import="com.modelo.IMDao"%>
 <%@page import="com.modelo.Reporte"%>
 <%@page import="com.modelo.ReporteDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -10,7 +11,7 @@
 <html>
     <head>
         <title>Formulario de FAQ</title>
-        <link rel="stylesheet" href="IM/Reportes/FAQS/style1.css">
+        <link rel="stylesheet" href="style1.css">
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             
         <meta charset="UTF-8">
@@ -32,19 +33,14 @@
         <div class="container">
     
         <form action="#" id="form">
-         <%
-         ReporteDao dao= new ReporteDao();
-         int id = Integer.parseInt((String)request.getAttribute("idrepo"));
-         Reporte r = (Reporte)dao.list(id);
-         
-     %>
+
             <div>
                  <h3 class="Text">Pregunta</h3>
-                 <input class="fill" type="text" name="pregunta" value="<%= r.getTitulo()%>">
+                 <input class="fill" type="text" name="pregunta" value="">
             </div>
             <div>
                  <h3 class="Text">Respuesta</h3>
-                 <textarea form="form" placeholder="Escriba la solución a la problematica" rows="20" id="content" class="fillarea"  name="respuesta" > <%= r.getSolucion()%> </textarea>
+                 <textarea form="form" placeholder="Escriba la solución a la problematica" rows="20" id="content" class="fillarea"  name="respuesta" >  </textarea>
                  <p class="warning" id="warning-des"></p>
             </div>
             <div class="button-area">

@@ -2,7 +2,7 @@ const faqlist = document.querySelector(".container");
 
 function listar(){
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "../../../cerrados", true);
+    xhr.open("GET", "../../../cerradosIM", true);
     xhr.onload = () =>{
         if(xhr.readyState === XMLHttpRequest.DONE){
             if(xhr.status === 200){
