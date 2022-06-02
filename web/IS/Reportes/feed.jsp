@@ -23,13 +23,13 @@
                 <span>S</span>upport<span>W</span>ide
             </div>
             <div class="links">
-                <a href="IS/Reportes/Reportes/cerrado.jsp">Ver Reportes </a>
+                <a href="Reportes/cerrado.jsp">Cerrados </a>
             </div>
             <div class="links">
-                <a href="FAQS/FAQs.jsp">Ver FAQ's </a>
+                <a href="../../FAQS/FAQs.jsp">Ver FAQ's </a>
             </div>
             <div class="links">
-                <a href="../../listaIS?accion=reportesM">Ver Reportes </a>
+                <a href="../../listaIS?accion=reportesM">Enviados </a>
             </div>
         </nav>
     </header>

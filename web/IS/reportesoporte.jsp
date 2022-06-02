@@ -11,11 +11,23 @@
 <html>
     <head>
         <title>Formulario de reporte</title>
-        <link rel="stylesheet" href='IS/style.css'>
+        <link rel="stylesheet" href="style.css">
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 <script src="validate.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+          <%
+                 int idrep = Integer.parseInt(request.getParameter("id").toString());
+                 Reporte faq = new ReporteDao().list(idrep);
+                 if(faq.getIdReporte() == 0){
+                          response.sendRedirect("IS/Reportes/feed.jsp");
+                 }
+                 else{
+                          HttpSession objSesion = request.getSession();
+                          objSesion.setAttribute("idr", idrep);
+                 }
+        %>
         <!--Autor:Luu-->
     </head>
     <header>
@@ -24,8 +36,7 @@
                 <span>S</span>upport<span>W</span>ide
             </div>
             <div class="links">
-                <a href="index.jsp">Inicio</a>
-                <a href="FAQs.jsp">FAQs</a>
+                <a href="Reportes/feed.jsp">Inicio</a>
             </div>
         </nav>
     </header>
@@ -35,20 +46,15 @@
         <div class="container">
             <!-- METODO QUE NO HACE TRAER LOS DATOS PARA REFLEJARLOS EN EL FORMULARIO -->
             <!-- CON EL "IDREPO" RECOGEMOS EL ID DEL REPORTE SELECCIONADO PARA REFLEJAR LOS DATOS DEL REPORTE -->
-     <%
-         ReporteDao dao= new ReporteDao();
-         int id = Integer.parseInt((String)request.getAttribute("idrepo"));
-         Reporte r = (Reporte)dao.list(id);
-         
-     %>
-        <form action="listaIS" id="formulario">
+     
+        <form action="#" id="form">
              <div>
                  <!-- FORMULARIO CON LOS DATOS DEL REPORTE SELECIONADO PARA ENVIAR O CERRAR REPORTE -->
-           <input type="hidden" min="" id="fechaActual" value="<%= r.getIdReporte()%>" name="idr">
+           <input type="hidden" min="" id="fechaActual" value="<% out.print(faq.getIdReporte()); %>" name="idr">
             </div>
             <div>
                 <h3 class="Text">Fecha de inicio</h3>
-                <input class="fill date1" type="date" min="" id="fechaActual" value="<%= r.getInicio()%>" readonly>
+                <input class="fill date1" type="date" min="" id="fechaActual" value="<% out.print(faq.getInicio()); %>" readonly>
             </div>
             <div class="warning" id="cwcorreo1">
                 <i class="fas fa-exclamation"></i>
@@ -68,13 +74,13 @@
             <div>
                  <h3 class="Text">Estatus</h3>
                  <select class="fill">
-                    <option value="" ><%= r.getEstatus()%></option>
+                    <option value="" ><% out.print(faq.getEstatus()); %></option>
                     <option value="" >Mantenimiento</option>
                 </select>
             </div>
             <div>
                 <h3 class="Text">Título:</h3>
-                <input class="fill date1" type="text" min="" id="titulo" value="<%= r.getTitulo()%>"   name="tit" readonly>
+                <input class="fill date1" type="text" min="" id="titulo" value="<% out.print(faq.getTitulo()); %>"   name="tit" readonly>
             </div>
             <div>
                  <h3 class="Text">Solucion</h3>
@@ -83,11 +89,11 @@
 
             </div>
             <div class="button-area">
-            <input onclick="return enviarForm()" class="button" name="accion" id="BtnIniciar" type="submit" value="Cerrar">
+            <input  class="button" name="accion" id="BtnIniciar" type="submit" value="Cerrar">
             </div>
         </form>
         </div>
-                    <script src="IS/validate.js"></script>           
+                    <script src="cerrar.js"></script>           
 
          <script>
 $(function(){

@@ -23,7 +23,7 @@
                 <span>S</span>upport<span>W</span>ide
             </div>
             <div class="links">
-                <a href="listaIS?accion=reportes">Ver Reportes </a>
+                <a href="IS/Reportes/feed.jsp">Inicio</a>
             </div>
         </nav>
     </header>

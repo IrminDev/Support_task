@@ -4,9 +4,17 @@
         <servlet-name>Enviar</servlet-name>
         <servlet-class>com.controlador.Enviar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>cerrar</servlet-name>
+        <servlet-class>com.controlador.cerrar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Enviar</servlet-name>
         <url-pattern>/Enviar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cerrar</servlet-name>
+        <url-pattern>/cerrar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

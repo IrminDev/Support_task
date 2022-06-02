@@ -57,20 +57,7 @@ public class listaIS extends HttpServlet {
     String acceso="";  
     String accion = request.getParameter("accion");
     
-    /*Acceso a diferentes pagina modulo de consultas*/
-    if(accion.equalsIgnoreCase("pendientes")){
-      
-        acceso=listar;
-        
-    }else
-        /*SI QUEREMOS VER LOS REPORTES QUE SE CERRARON*/
-        if(accion.equalsIgnoreCase("reportes")){
-        List<Reporte> lista = new ArrayList<>();
-        lista= rdao.listarReportesC();
-        acceso=listarC;
-        request.setAttribute("lista",lista);
-        
-    }else
+    
             /*SI QUEREMOS VER LOS REPORTES QUE SE ENVIARON*/
         if(accion.equalsIgnoreCase("reportesM")){
         List<Reporte> lista = new ArrayList<>();
@@ -78,49 +65,7 @@ public class listaIS extends HttpServlet {
         acceso=reportes;
         request.setAttribute("list",lista);
         
-        }else
-            /*CUANDO QUEREMOS IR AL FORMULARIO PARA ENVIAR O CERRAR Y QUEREMOS DESPLEGAR LOS DATOS DE ESTE NECESITAMOS EL
-            PARAMETRO DEL ID*/
-        if(accion.equalsIgnoreCase("altar")){
-            /*CON ESTO TOMAMOS EL ID TOMANDO EL ATRIBUTO IDREPO*/
-            request.setAttribute("idrepo",request.getParameter("id"));
-            acceso=add;
-            
-        }else
-            /*CUANDO QUEREMOS ENVIAR EL REPORTE A MANTENIMIENTO*/
-            if(accion.equalsIgnoreCase("Enviar")){
-                /*TENEMOS DOS PARAMETROS UNO EL ID Y LA DESCRIPCION*/
-               int id= Integer.parseInt(request.getParameter("idr"));
-                String des = request.getParameter("tit");
-                repo.setIdReporte(id);
-                repo.setTitulo(des);
-                /*ENVIAMOS LOS DATOS AL ALTAMANTENIMIENTO PARA QUE SE GENERE UN REPORTE DE TIPO MANTENIMIENTO*/
-                rdao.altaMantenimiento(repo);
-                
-                /*UNA VEZ HECHO EL FORMULARIO NOS LLEVARA A LA PAGINA DE CONSULTAS PENDIENTES*/
-                List<Reporte> lista = new ArrayList<>();
-                lista= rdao.listarReportesMM();
-                acceso=reportes;
-                request.setAttribute("list",lista);
-                
-            }else
-                /*CUANDO QUEREMOS CERRAR EL REPORTE*/
-                if(accion.equalsIgnoreCase("Cerrar")){
-                /*IGUAL TENEMOS DOS PARAMETROS EL ID Y LA DESCRIPCION*/
-                id= Integer.parseInt(request.getParameter("idr"));
-                String des = request.getParameter("des");
-                repo.setIdReporte(id);
-                repo.setSolucion(des);
-                rdao.cerrarReporte(repo);
-                /*AENVIAMOS LOS DATOS AL METODO CERRARREPORTE PARA GENERAR UN CABIO DE ESTADO Y DESCRIPCION*/
-                List<Reporte> lista = new ArrayList<>();
-                lista= rdao.listarReportesP();
-                acceso=listar;
-                request.setAttribute("lista",lista);
-               
-                
-                
-            }
+        }
       RequestDispatcher vista = request.getRequestDispatcher(acceso);
           vista.forward(request, response);
         

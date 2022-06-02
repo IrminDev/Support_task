@@ -21,6 +21,10 @@
              <div class="nav_logo">
                  <span>S</span>upport<span>W</span>ide
              </div>
+             
+              <div class="links">
+                <a href="../feed.jsp">Inicio</a>
+            </div>
 
              <%
                       if(Integer.parseInt(request.getSession().getAttribute("editor").toString()) == 1){
@@ -35,7 +39,7 @@
          </nav>
      </header>
     <body>
-            <h3 class="titulo">Preguntas frecuentes</h3>
+            <h3 class="titulo">Reportes cerrados</h3>
             <div class="container">  
                 
             </div>

@@ -55,9 +55,10 @@ public class EnviarR extends HttpServlet {
                               "<h3 class=\"Text\">Fecha de fin: " +lista.get(i).getInicio() +"</h3>\n"+
                               "<h3 class=\"Text\">Título: "  +lista.get(i).getTitulo()+ "</h3>\n"+
                               "</div>\n"+
+                              "<a href=\"../../Enviar?id=" +lista.get(i).getIdReporte()+"\">Enviar</a>"+
+                              "<a href=\"../reportesoporte.jsp?id="+lista.get(i).getIdReporte()+"\">Solucionar</a>\n" +
                               "</div>"+
-"<a href=\"../../Enviar?id=" +lista.get(i).getIdReporte()+"\"/>\">Enviar</a>"+
- "<a href=\"../../listaIS?accion=altar&id="+lista.get(i).getIdReporte()+"\"/>\">Solucionar</a>\n" +
+
 "</div>"  ;
                            }
                 
