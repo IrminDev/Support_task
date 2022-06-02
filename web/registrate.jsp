@@ -20,11 +20,18 @@
         </nav>
     </header>
     <body>
-        <h3 class="titulo">Registrate</h3>
+<h3 class="titulo">Registrate</h3>
+<div class="intro">
+    <p>Es un gusto que estés en  <span>S</span>upport<span>W</span>ide. Registrarte en ella, te da acceso a nuestra increible platadorma de trabajo donde según tu rol podras hacer tus actividades facilmente.</p>
+
+</div>
         <div class="container">
+            
             <form class="registroForm" action="../ControlUsuarios" method="POST" autocomplete="off">
+                
                 <div class="error-text"></div>
                 <div class="input-field" id="cnombre">
+                    
                     <h3 class="Text">Nombre</h3>
                     <i class="fas fa-user"></i>
                     
@@ -75,13 +82,31 @@
                             </optgroup>
                         </select>
                     </div>
+                    <h3 class="Text">Editor:</h3>
+                     <select class="fill" name="tipoR" id="">                        
+                            <optgroup label="Escoge una opción">
+                                <option value="1">Sí, quiero ser editor</option>
+                                <option value="0">No quiero ser editor</option>
+                            </optgroup>
+                        </select>
                     <input name="accion" type="submit" onclick="return enviarRegistro()" value="Registrar" class="button">
                 </div>
-
+                
                 <div class="inicio-link">
                     <p class="social-text">¿Ya tienes una cuenta? <a href="index.jsp" class="link">Inicia sesión</a></p>
                 </div>
             </form>
+                    <div class="vector"> 
+            <div class="box">
+               <img class="" src="vector.jpg" alt="alt"/>   
+            </div>
         </div>
+              
+        </div>
+
+        <footer class="foot">
+            <h3>© MixcoTech</h3>
+            <p>Todos los derechos reservados</p>
+            </footer> 
     </body>
 </html>

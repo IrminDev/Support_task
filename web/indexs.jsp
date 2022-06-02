@@ -9,12 +9,13 @@
 <html>
     <head>
         <title>Inicio</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style_1.css">
         <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--Autor:Luu-->
     </head>
+        <body>
     <header>
         <nav class="nav">
             <div class="nav_logo">
@@ -22,7 +23,7 @@
             </div>
         </nav>
     </header>
-    <body>
+
         <h3 class="titulo">Iniciar sesion</h3>
         <div class="container">
 
@@ -43,6 +44,16 @@
 
             </form>
         </div>
+            <section>
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+    </section>
+                <footer class="foot">
+            <h3>© MixcoTech</h3>
+            <p>Todos los derechos reservados</p>
+            </footer> 
         <script src="iniciarSesion.js"></script>
     </body>
 </html>
