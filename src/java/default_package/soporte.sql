@@ -468,7 +468,7 @@ select * FROM faq;
 
 call cerrarReporteM4(2,"solucionado",1);
 call listarReportesM(4);
-call altaReporteMantenimiento(1,"tabien1",4);
+call altaReporteMantenimiento(1,"tabien1",3);
 call listarReportesC(3);
 call altaReporte("a mimir",3);
 call listarReportesP(3);

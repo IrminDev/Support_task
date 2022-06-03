@@ -87,6 +87,12 @@
             <input onclick="return enviarForm()" class="button" name="accion" id="BtnIniciar" type="submit" value="guardar">
             </div>
         </form>
+                                <section>
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+    </section>
         </div>
                     <script src="IM/validate.js"></script>           
          <script>

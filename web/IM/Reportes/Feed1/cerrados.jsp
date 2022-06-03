@@ -11,7 +11,7 @@
 <html>
     <head>
         <title>Inicio</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../../../IS/Reportes/style.css">
         <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +25,7 @@
                          <%
                       if(Integer.parseInt(request.getSession().getAttribute("editor").toString()) == 1){
                                out.print("<div class=\"links\">\n" +
-"                 <a href=\"../../FAQS/addFAQ.jsp\">Agregar FAQ </a>\n" +
+"                 <a href=\"../../FAQS/addFAQ.jsp\" class=\"a\">Agregar FAQ </a>\n" +
 "             </div>");
                       }
              %>
@@ -35,11 +35,17 @@
         </nav>
     </header>
     <body>
-        <h3 class="titulo">Reportes pendientes</h3>
+        <h3 class="titulo titulo3">Reportes cerrados</h3>
 
         <div class="container">
         
         </div>
+                    <section>
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+    </section>
         <script src="FAQs.js"></script>
         </div>
         <script src="Listar.js"></script>
