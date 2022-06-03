@@ -159,7 +159,7 @@ INSERT INTO relacion_reporte_estatus VALUES
 
 END &&
 delimiter ;
-call altaReporte("Va",3);
+
 
 -- PROCESO ALMACENADO DE DAR ALTA UN REPORTE DE MANTENIMIENTO
 
@@ -465,10 +465,10 @@ SELECT * FROM reporte;
 select * FROM faq;
 
 
-
+call altaReporte("Va",3);
 call cerrarReporteM4(2,"solucionado",1);
 call listarReportesM(4);
-call altaReporteMantenimiento(1,"tabien1",3);
+call altaReporteMantenimiento(1,"tabien1",4);
 call listarReportesC(3);
 call altaReporte("a mimir",3);
 call listarReportesP(3);

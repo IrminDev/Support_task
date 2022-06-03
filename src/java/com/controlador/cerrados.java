@@ -49,12 +49,12 @@ public class cerrados extends HttpServlet {
                               "</div>\n" +
                               "</div>\n"+
                               "<div class=\"division dos\">\n" +
-                              "<h3 class=\"Text\">Ingeniero de Soporte a cargo:</h3>\n"+
+                              "<h3 class=\"Text\"><span>Ingeniero de Soporte a cargo:</span></h3>\n"+
                               "<h3 class=\"Text\">" +lista.get(i).getNombreEncargado()+" "+lista.get(i).getApellidoEncargado() + "</h3>\n"+
-                              "<h3 class=\"Text\">Fecha de inicio: " +  lista.get(i).getInicio()+"</h3>\n" +
-                              "<h3 class=\"Text\">Fecha de fin: " +lista.get(i).getInicio() +"</h3>\n"+
-                              "<h3 class=\"Text\">Título: "  +lista.get(i).getTitulo()+ "</h3>\n"+
-                              "<h3 class=\"Text\">Solución:</h3>\n" +
+                              "<h3 class=\"Text\"><span>Fecha de inicio: </span>" +  lista.get(i).getInicio()+"</h3>\n" +
+                              "<h3 class=\"Text\"><span>Fecha de fin: </span>" +lista.get(i).getInicio() +"</h3>\n"+
+                              "<h3 class=\"Text\"><span>Título:</span> "  +lista.get(i).getTitulo()+ "</h3>\n"+
+                              "<h3 class=\"Text\"><span>Solución:</span></h3>\n" +
                               "<textarea  rows=\"20\" id=\"content\" class=\"fillarea\" readonly >" + lista.get(i).getSolucion() + "</textarea>" +
                               "</div>\n"+
                               "</div>"+
