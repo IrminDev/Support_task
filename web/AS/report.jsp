@@ -23,8 +23,8 @@
                 <span>S</span>upport<span>W</span>ide
             </div>
             <div class="links">
-                <a href="index.jsp">Inicio</a>
-                 <a href="FAQS/FAQs.jsp">FAQs</a>
+                <a class="a" href="index.jsp">Inicio</a>
+                 <a class="a" href="FAQS/FAQs.jsp">FAQs</a>
             </div>
         </nav>
     </header>
@@ -70,7 +70,12 @@
           
         </form>
         </div>
-
+                                            <section>
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+    </section>
          <script>
 $(function(){
     var textArea = $('#content'),

@@ -51,7 +51,7 @@ public class IMDao extends Conexion{
            return lista;
     }
      /*METODO PARA GENERAR UNA LISTA DE LOS REPORTES QUE ESTAN EN ESTATUS "CERRADO O MANTENIMIENTO"*/
-    public List<Reporte> listarReportes(){
+    public List<Reporte> listarReportes (){
         /*ARRAY QUE CONTENDRA LOS DATOS QUE QUEREMOS*/
         List<Reporte> lista = new ArrayList<>();
         /*PROCESO ALMACENADO QUE NOS MOSTRARA LOS REPORTES DEL INGENIERO DE MANTENIMIENTO*/
