@@ -11,6 +11,7 @@ public class Usuario {
     private String correo;
     private String contrasena;
     private boolean editor;
+    private int tipo;
 
          public boolean isEditor() {
                   return editor;
@@ -60,5 +61,12 @@ public class Usuario {
         this.contrasena = contrasena;
     }
     
+    public int getTipo(){
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
     
 }

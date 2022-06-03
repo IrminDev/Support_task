@@ -27,7 +27,7 @@
 </div>
         <div class="container">
             
-            <form class="registroForm" action="../ControlUsuarios" method="POST" autocomplete="off">
+            <form class="registroForm" action="registrar" method="POST" autocomplete="off">
                 
                 <div class="error-text"></div>
                 <div class="input-field" id="cnombre">
@@ -35,7 +35,7 @@
                     <h3 class="Text">Nombre</h3>
                     <i class="fas fa-user"></i>
                     
-                    <input class="fill" type="text" id="nombre" name="nombreR" placeholder="Nombre">
+                    <input class="fill" type="text" id="nombre" name="nombre" placeholder="Nombre">
                 </div>
                 <div class="warning" id="cwnombre">
                     <i class="fas fa-exclamation"></i>
@@ -44,7 +44,7 @@
                 <div class="input-field" id="capellido">
                     <h3 class="Text">Apellido</h3>
                     <i class="fas fa-user"></i>
-                    <input class="fill" type="text" id="apellido" name="apellidoR" placeholder="Apellido">
+                    <input class="fill" type="text" id="ape" name="ape" placeholder="Apellido">
                 </div>
                 <div class="warning" id="cwapellido">
                     <i class="fas fa-exclamation"></i>
@@ -53,7 +53,7 @@
                 <div class="input-field" id="ccorreo">
                     <h3 class="Text">Correo electronico</h3>
                     <i class="fas fa-envelope"></i>
-                    <input class="fill" type="email" id="correo" name="correoR" placeholder="Correo electrónico">
+                    <input class="fill" type="email" id="correo" name="correo" placeholder="Correo electrónico">
                 </div>
                 <div class="warning" id="cwcorreo">
                     <i class="fas fa-exclamation"></i>
@@ -63,7 +63,7 @@
                 <div class="input-field" id="ccontra">
                     <h3 class="Text">Contraseña</h3>
                     <i class="fas fa-lock"></i>
-                    <input class="fill" type="password" id="contra" name="contraR" placeholder="Contraseña">
+                    <input class="fill" type="password" id="contra" name="contra" placeholder="Contraseña">
                 </div>
                 <div class="warning" id="cwcontra">
                     <i class="fas fa-exclamation"></i>
@@ -74,7 +74,7 @@
                     <div class="input-field">
                         <h3 class="Text">Tipo de usuario</h3>
                         <i class="fas fa-tag" id="repair"></i>
-                        <select class="fill" name="tipoR" id="">
+                        <select class="fill" name="tipo" id="tipo">
                             <optgroup label="Escoge una opción">
                                 <option value="1">Asesor de soporte</option>
                                 <option value="2">Ingenierio de soporte</option>
@@ -83,13 +83,13 @@
                         </select>
                     </div>
                     <h3 class="Text">Editor:</h3>
-                     <select class="fill" name="tipoR" id="">                        
+                     <select class="fill" name="editor" id="editor">                        
                             <optgroup label="Escoge una opción">
                                 <option value="1">Sí, quiero ser editor</option>
                                 <option value="0">No quiero ser editor</option>
                             </optgroup>
                         </select>
-                    <input name="accion" type="submit" onclick="return enviarRegistro()" value="Registrar" class="button">
+                    <input name="accion" type="submit" onclick="return registrar()" value="Registrar" class="button">
                 </div>
                 
                 <div class="inicio-link">
