@@ -63,7 +63,7 @@ public class UsuarioOpx  extends Conexion{
          }
          
        public String[] register(Usuario user) throws Exception {
-       String estado[] = new String[2];
+       String estado[] = new String[1];
        Statement stm;
        ResultSet rs;
        try{
@@ -74,8 +74,9 @@ public class UsuarioOpx  extends Conexion{
                estado[0] = "registrado";
            }
            else{
-               stm.executeUpdate("CALL  altaUsuario ('"+user.getNombre()+"', '"+user.getApellido()+"', '"+user.getCorreo()+"', '"+user.getContrasena()+"', '"+user.getTipo()+"', '"+user.isEditor()+"');");
+               stm.executeUpdate("CALL  altaUsuario ('"+user.getNombre()+"', '"+user.getApellido()+"', '"+user.getCorreo()+"', '"+user.getContrasena()+"', '"+user.getTipo()+"', "+user.isEditor()+");");
                rs = stm.executeQuery("SELECT * FROM usuario WHERE correo= '"+user.getCorreo()+"' ");
+               
            }
        }
        catch(Exception e){

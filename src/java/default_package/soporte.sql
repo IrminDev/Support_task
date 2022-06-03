@@ -108,7 +108,7 @@ INSERT INTO tipo_reporte VALUES
 DROP PROCEDURE IF EXISTS altaUsuario;
 delimiter &&
 CREATE PROCEDURE altaUsuario(
-nombreN nvarchar(20),
+nombreN nvarchar(40),
 apellidoN nvarchar(20),
 correoN nvarchar(60),
 contraN nvarchar(20),
@@ -463,6 +463,7 @@ delimiter ;
 
 SELECT * FROM reporte;
 select * FROM faq;
+select * FROM usuario;
 
 
 call altaReporte("Va",3);

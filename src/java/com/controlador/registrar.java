@@ -63,8 +63,8 @@ public class registrar extends HttpServlet{
                   try{
                   //Comprobamos el tipo de usuario
                   String tipos[] = AUX.register(user);
-                  objSesion.setAttribute("editor", tipos[2]);
-                  objSesion.setAttribute("id", tipos[1]);
+                  objSesion.setAttribute("editor", tipos[0]);
+
                   
                   //En la respuesta contestamos con el tipo de usuario
                   System.out.println(tipo);
