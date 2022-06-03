@@ -11,7 +11,7 @@
 <html>
     <head>
         <title>Formulario de reporte</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="Reportes/style_1.css">
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 <script src="validate.js"></script>
         <meta charset="UTF-8">
@@ -93,6 +93,12 @@
             </div>
         </form>
         </div>
+                                            <section>
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+    </section>
                     <script src="cerrar.js"></script>           
 
          <script>

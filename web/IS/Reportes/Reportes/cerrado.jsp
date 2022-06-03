@@ -1,7 +1,7 @@
 <%-- 
     Document   : cerrado
     Created on : 31 may. 2022, 23:02:34
-    Author     : itzelsosa
+    Author     : itzelsosa Y Luu hizo todo el diseño
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,7 +9,7 @@
 
     <head>
         <title>Inicio</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../style_1.css">
         <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,13 +23,13 @@
              </div>
              
               <div class="links">
-                <a href="../feed.jsp">Inicio</a>
+                  <a class="a" href="../feed.jsp">Inicio</a>
             </div>
 
              <%
                       if(Integer.parseInt(request.getSession().getAttribute("editor").toString()) == 1){
                                out.print("<div class=\"links\">\n" +
-"                 <a href=\"addFAQ.jsp\">Agregar FAQ </a>\n" +
+"                 <a href=\"addFAQ.jsp\" class=\"a\">Agregar FAQ </a>\n" +
 "             </div>");
                       }
              %>
@@ -43,7 +43,12 @@
             <div class="container">  
                 
             </div>
-
+                    <section>
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+    </section>
  </div>
 
         <script src="FAQs.js"></script>

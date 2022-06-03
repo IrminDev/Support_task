@@ -49,14 +49,14 @@ public class EnviarR extends HttpServlet {
                               "</div>\n" +
                               "</div>\n"+
                               "<div class=\"division dos\">\n" +
-                              "<h3 class=\"Text\">Ingeniero de Soporte a cargo:</h3>\n"+
+                              "<h3 class=\"Text\"><span>Ingeniero de Soporte a cargo:</span></h3>\n"+
                               "<h3 class=\"Text\">" +lista.get(i).getNombreEncargado()+" "+lista.get(i).getApellidoEncargado() + "</h3>\n"+
-                              "<h3 class=\"Text\">Fecha de inicio: " +  lista.get(i).getInicio()+"</h3>\n" +
-                              "<h3 class=\"Text\">Fecha de fin: " +lista.get(i).getInicio() +"</h3>\n"+
-                              "<h3 class=\"Text\">Título: "  +lista.get(i).getTitulo()+ "</h3>\n"+
+                              "<h3 class=\"Text\"><span>Fecha de inicio: " +  lista.get(i).getInicio()+"</span></h3>\n" +
+                              "<h3 class=\"Text\"><span>Fecha de fin:</span> " +lista.get(i).getInicio() +"</h3>\n"+
+                              "<h3 class=\"Text\"><span>Título:</span> "  +lista.get(i).getTitulo()+ "</h3>\n"+
                               "</div>\n"+
-                              "<a href=\"../../Enviar?id=" +lista.get(i).getIdReporte()+"\">Enviar</a>"+
-                              "<a href=\"../reportesoporte.jsp?id="+lista.get(i).getIdReporte()+"\">Solucionar</a>\n" +
+                              "<a href=\"../../Enviar?id=" +lista.get(i).getIdReporte()+"\"><button class=\"button\" >Enviar</button></a>"+
+                              "<a href=\"../reportesoporte.jsp?id="+lista.get(i).getIdReporte()+"\"><button class=\"button\" >Solucionar </button></a>\n" +
                               "</div>"+
 
 "</div>"  ;
