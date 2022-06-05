@@ -5,6 +5,7 @@ import com.modelo.Usuario;
 import com.modelo.UsuarioOpx;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -74,6 +75,9 @@ public class registrar extends HttpServlet{
                       objSesion.setAttribute("error", e);
                       response.sendRedirect("error.jsp");
                   }
+                  //Redirigimos al index al iniciar sesion - (Luu 2022)
+          RequestDispatcher vista = request.getRequestDispatcher("indexs.jsp");
+          vista.forward(request, response);
          }
 
          @Override
