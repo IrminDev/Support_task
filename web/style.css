@@ -209,3 +209,6 @@ display: none;
     background-color: var(--first-color);
        
 }
+.hide{
+    display: none;
+}

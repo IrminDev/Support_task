@@ -20,7 +20,7 @@
     <header>
         <nav class="nav">
             <div class="nav_logo">
-                <span>S</span>upport<span>W</span>ide
+                <a class="a" href="index.jsp"><span>S</span>upport<span>W</span>ide</a>
             </div>
             <div class="links">
                 <a class="a" href="index.jsp">Inicio</a>

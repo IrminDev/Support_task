@@ -42,6 +42,7 @@ function enviarForm(){
        war.classList.add('activew');
        war.innerHTML="Describe la situacion del reporte";
            console.log("Si");
+           
 
    } else{
                   console.log("si paso");

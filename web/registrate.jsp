@@ -82,8 +82,8 @@
                             </optgroup>
                         </select>
                     </div>
-                    <h3 class="Text">Editor:</h3>
-                     <select class="fill" name="editor" id="editor">                        
+               
+                     <select class="fill hide" name="editor" id="editor">                        
                             <optgroup label="Escoge una opción">
                                 <option value="1">Sí, quiero ser editor</option>
                                 <option value="0">No quiero ser editor</option>

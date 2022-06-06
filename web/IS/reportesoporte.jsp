@@ -84,7 +84,7 @@
             </div>
             <div>
                  <h3 class="Text">Solucion</h3>
-                 <textarea form="formulario" placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"  name="des"></textarea>
+                 <textarea form="form" placeholder="Describa la problematica a solucionar aquí" rows="20" id="content" class="fillarea"  name="des"></textarea>
                                   <p class="warning" id="warning-des"></p>
 
             </div>
